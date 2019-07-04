@@ -14,7 +14,6 @@ class ShoppingBasket extends React.Component {
 
   componentDidMount() {
     this.fetchBasket();
-    console.log('cos');
   }
 
 
