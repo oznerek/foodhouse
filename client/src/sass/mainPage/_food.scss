@@ -1,0 +1,140 @@
+.food{
+    height: 80vh;
+    background-color: purple;
+    position: relative;
+}
+
+.open{
+    display: none;
+    z-index: 1002;
+    background-color: $primary-color;
+    border-radius: 50%;
+	position: fixed;
+	bottom: 5%;
+	right: 5%;
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+    transition: opacity 0.2s linear;
+    @media only screen and (max-width: $tablet) {
+        display: block;      }
+	&:hover{
+		opacity: .8;
+	}
+	span{
+		display: block;
+		float: left;
+		clear: both;
+		height: 3px;
+		width: 30px;
+		border-radius: 40px;
+		background-color: $light-color-2;;
+		position: absolute;
+		right:10px;
+		overflow: hidden;
+		transition: all 0.4s ease;
+		&:nth-child(1){
+			margin-top: 14px;
+			z-index: 9;
+		}
+		&:nth-child(2){
+			margin-top: 25px;
+		}
+		&:nth-child(3){
+			margin-top: 36px;
+		}
+	}
+}
+
+
+// MENU FOR MOBILE PHONE
+.sub-menu{
+	transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+		height: 0;
+		width: 0;
+		right: 0;
+		top: 0;
+		position: absolute;
+		background-color: rgba($primary-color, .7);
+		border-radius: 50%;
+		z-index: 18;
+		overflow: hidden;
+		li{
+            
+			display: block;
+			float: right;
+			clear: both;
+			height: auto;
+			margin-right: -150px;
+			transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+			&:first-child{				
+				-webkit-transition-delay: 0s;
+			}
+			&:nth-child(1){
+				-webkit-transition-delay: 0.2s;
+			}
+			&:nth-child(2){
+				-webkit-transition-delay: 0.25s;
+			}
+			&:nth-child(3){
+				-webkit-transition-delay: 0.35s;
+			}
+			&:nth-child(4){
+				-webkit-transition-delay: 0.40s;
+			}
+			&:nth-child(5){
+				-webkit-transition-delay: 0.45s;
+			}
+			a{
+				color: #fff;
+				font-family: 'Lato', Arial, Helvetica, sans-serif;
+				font-size: 16px;
+				width: 100%;
+				display: block;
+				float: left;
+				line-height: 40px;
+			}
+		}
+	}
+
+	.oppenned{
+        background-color: white;
+        color: $primary-color;
+        z-index: 1004;
+		.sub-menu{
+            z-index: 1001;
+            padding-top: 4rem;
+			opacity: 1;
+			height: 100%;
+            width: 100%;
+            top: -3rem;
+        }
+        span {
+            background-color: white;
+        }
+		span:nth-child(2){
+			overflow: visible;
+		}
+		span:nth-child(1), span:nth-child(3){
+			z-index: 1003;
+			transform: rotate(45deg);
+		}
+		span:nth-child(1){
+			transform: rotate(45deg) translateY(6px) translateX(6px);
+		}
+		span:nth-child(2){
+            z-index: 1000;
+			height: 46rem;
+			width: 46rem;
+			right: -16rem;
+			top: -24rem;
+			border-radius: 50%;
+			background-color: rgba($primary-color, .7);
+		}
+		span:nth-child(3){			
+			transform: rotate(-45deg) translateY(-10px) translateX(10px);
+		}
+		li{
+			margin-right: 17rem;
+		}
+	}

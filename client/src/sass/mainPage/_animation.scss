@@ -1,0 +1,52 @@
+
+//  ------- ANIMATION ----------
+@keyframes moveInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    80% {
+      transform: translateX(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+   
+  @keyframes shadowRight {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+  @keyframes shadowLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+  
+  @keyframes moveInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    80% {
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+  
+  

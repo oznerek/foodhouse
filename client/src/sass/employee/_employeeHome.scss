@@ -1,0 +1,110 @@
+.employee{
+    display: flex;
+    justify-content: space-between;
+    height: 60rem;
+    & >.notLogin{
+        margin-top: 5rem;
+        justify-content: center;
+    }
+    &__navigation {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 10%;
+        background-color:$primary-color;
+        border-top-right-radius: 70px;
+        @media only screen and (max-width: $tablet-land) {
+            width: 15%
+          }
+          @media only screen and (max-width: $phone) {
+            width: 20%
+          }
+        &-1{
+            position: absolute;
+            width: 14%;
+            min-height: 60rem;
+            z-index: -1;
+            background-color: $secondary-light;
+            height: max-content;
+            border-top-right-radius: 70px;
+            @media only screen and (max-width: $tablet-land) {
+                width: 20%;
+              }
+              @media only screen and (max-width: $phone) {
+                width: 27%
+              }
+        }
+    }
+    &__photo {
+        margin-top: 5rem;
+        width: 7.5rem;
+        height: 7.5rem;
+        border-radius: 100%;
+        border: 2px solid $light-color-2;
+        background-color: blue;
+        @media only screen and (max-width: $tablet-land) {
+            width: 5rem;
+            height: 5rem;
+          } 
+    }
+    &__workspace{
+        max-height: 56rem;
+        margin-top: 4rem;
+        width: 86%; 
+        overflow: auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        align-self: flex-start;
+        // background-color: $light-color-2;
+        @media only screen and (max-width: $tablet-land) {
+            grid-template-columns: repeat(3, 1fr);
+            width: 80%;
+          } 
+          @media only screen and (max-width: $tablet) {
+            grid-template-columns: repeat(2, 1fr)
+          }
+          @media only screen and (max-width: $phone) {
+            grid-template-columns: 1fr;
+            width:73%;
+          }
+    }
+   
+}
+
+.addNewOrder{
+    display: flex;
+    justify-content: flex-end;
+    padding-left: 5%;
+
+    &__icon{
+        font-size: 180%;
+
+        margin-top: 5rem;
+        padding: .5rem;
+        i{cursor: pointer;}
+        @media only screen and (max-width: $tablet-land) {
+            font-size: 180%;
+          }
+    }
+}
+
+.userMenu {
+    width: 100%;
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+}
+
+.notLogin {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    height: max-content;
+    background-color: $light-color-2;
+    color: $secondary-light;
+    border-radius: 10px;
+    padding: 1rem;
+    border: 2px solid $secondary-light;
+}

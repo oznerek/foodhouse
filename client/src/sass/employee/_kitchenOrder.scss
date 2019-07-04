@@ -1,0 +1,30 @@
+.kitchenOrder {
+    margin: .5rem;
+    background-color: $light-color-1;
+    width: auto;
+    color:red;
+    border-radius: 5px; 
+
+    &__header{
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        padding-left: 2rem;
+        background-color: $primary-color;
+        color: $light-color-2;
+    }
+
+    &__todo{
+        padding-left: .5rem;
+        font-size: 70%;
+        color: black;
+        border-bottom: 1px dotted white;
+    }
+
+    &__dish {
+        display: flex;
+        flex-direction: column;
+        &-extras{
+            margin-left: 1rem;
+        }
+    }
+} 

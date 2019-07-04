@@ -1,0 +1,142 @@
+// CUSTOMERS ------------------------------------//
+.slidephoto {
+  position: relative;
+  overflow: hidden;
+  height: 60rem;
+  background-color: $primary-color;
+  @media only screen and (max-width: $tablet) {
+    height: 45rem; 
+   }
+   @media only screen and (max-width: $phone) {
+    height: 35rem; 
+
+  }
+}
+
+/* animateted background  */
+li {
+  list-style-type: none;
+}
+
+.slideshow,
+.slideshow:after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 0;
+}
+.slideshow:after {
+  content: "";
+  background: transparent black repeat top left;
+}
+.slideshow li span {
+  filter: contrast(130%);
+
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  color: transparent;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 32s linear infinite 0s;
+}
+
+.slideshow li .animation-photo {
+  filter: contrast(130%);
+
+  z-index: 1000;
+  position: absolute;
+  bottom: 30px;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  color: #fff;
+  animation: titleAnimation 32s linear infinite 0s;
+}
+.slideshow li .animation-photo h3 {
+  font-size: 300%;
+  padding: 0;
+  line-height: 200px;
+  @media only screen and (max-width: $tablet) {
+   font-size: 250%; 
+  }
+}
+.slideshow li:nth-child(1) span {
+  background-image: url(../img/customers.jpg);
+}
+.slideshow li:nth-child(2) span {
+  background-image: url(../img/decor1.jpg);
+  animation-delay: 8s;
+}
+.slideshow li:nth-child(3) span {
+  background-image: url(../img/decor2.jpg);
+  animation-delay: 16s;
+}
+.slideshow li:nth-child(4) span {
+  background-image: url(../img/food.jpg);
+  animation-delay: 24s;
+}
+
+.slideshow li:nth-child(2) .animation-photo {
+  animation-delay: 8s;
+}
+.slideshow li:nth-child(3) .animation-photo {
+  animation-delay: 16s;
+}
+.slideshow li:nth-child(4) .animation-photo {
+  animation-delay: 24s;
+}
+
+@keyframes imageAnimation {
+  0% {
+    opacity: 0;
+    animation-timing-function: ease-in;
+  }
+  8% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+    transform: scale(1.05);
+  }
+  17% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  25% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes titleAnimation {
+  0% {
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  17% {
+    opacity: 1;
+  }
+  19% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.no-cssanimations .slideshow li span {
+  opacity: 1;
+}

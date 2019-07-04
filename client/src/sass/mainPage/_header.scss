@@ -1,0 +1,42 @@
+.header {
+  background-image: url(../img/header_2.jpg);
+  height: 30rem;
+  background-size: cover;
+  display: flex;
+  @media only screen and (max-width: $desktop) {
+    height: 20rem;
+  }
+  @media only screen and (max-width: $phone) {
+height: 12rem;   
+   } 
+
+  &__box {
+    margin-left: 10%;
+    width: 22rem;
+    background-color: rgba($light-color-1, $alpha: 0.5);
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media only screen and (max-width: $desktop) {
+      margin-left: 0;
+      width: 16rem;
+    }
+
+    @media only screen and (max-width: $phone) {
+      margin-left: 0;
+      width: 10rem;
+    }
+
+    &-logo {
+      width: 15rem;
+      height: 20rem;
+      @media only screen and (max-width: $desktop) {
+        transform: scale(0.66);
+      }
+      @media only screen and (max-width: $phone) {
+        transform: scale(0.34);
+      }
+    }
+  }
+}

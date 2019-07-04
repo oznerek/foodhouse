@@ -1,0 +1,37 @@
+.order{
+    margin: 1rem;
+    border-radius: 4rem;
+    width: auto;
+    background-color: orangered;
+    div{
+        min-height: 6rem;
+        display: flex;
+    }
+
+    &:hover {
+        background-color: purple;
+    }
+    &__number {
+        text-align: center;
+        align-self: center;
+        overflow: auto;
+        width:30%;
+    }
+
+    &__status {
+        border-left: 1px solid white;
+        width: 70%;
+        text-align: center;
+        align-self: center;
+    }
+
+    &__collapse {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 1rem;
+        i {
+            cursor: pointer;
+        }
+
+    }
+}

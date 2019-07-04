@@ -1,0 +1,38 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    border-top: 3px solid $secondary-light;
+
+  @media only screen and (max-width: $tablet_land) {
+    padding: 1.2rem;
+    border-top: 2px solid $secondary-light;   
+   } 
+  @media only screen and (max-width: $phone) {
+      padding: .7rem;
+    border-top: 1px solid $secondary-light;   
+   } 
+
+    &__link {
+        &:link,
+        &:visited {
+        padding-left: 1rem;
+        text-decoration: none; 
+        color: $light-color-2;
+            transition: all .4s;
+        }
+        &:hover{
+            color: $light-color-1;
+            transform: scale(1.1);
+        } 
+    }
+    &__author,
+    &__powered {
+        display: flex;
+        justify-content: center;
+    }
+    &__powered {
+        font-size: 50%;
+    }
+}

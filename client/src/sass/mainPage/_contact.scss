@@ -1,0 +1,117 @@
+.contact {
+    height: max-content; 
+    background-image: url(../img/contact.jpg);
+    background-size: cover;
+    background-position: center;
+
+    &__header {
+        text-align: center;
+        font-size: 300%;
+        padding: 3rem;;
+    }
+    &__links{
+        width: 100%;
+    }
+
+    &__content {
+        display: flex;
+        justify-content: space-around;
+        padding-bottom: 3rem;
+        @media only screen and (max-width: $tablet) {
+            flex-direction: column;
+            width:100%;
+            align-items: center;
+          }
+    }
+}
+
+.address {
+    &__title {
+        font-size: 80%;
+        text-transform: uppercase;
+        font-weight: 800;
+    }
+
+    &__code {
+        font-size: 120%;
+        font-weight: 100;
+    }
+
+    &__link {
+        color: currentColor;
+        &:hover,
+        &:active {
+            text-decoration: none;
+            color: $light-color-1;
+        }
+    }
+}
+
+.message {
+    box-sizing: content-box;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    @media only screen and (max-width: $tablet) {
+        width: 80%;
+    }
+ 
+    &__line {
+        display: flex;
+    }
+
+    &__line &__input {
+        margin-right: 0;
+     }
+    
+    &__input {
+        padding: .5rem;
+        margin: .5rem;
+        width: 100%;
+        background-color: transparent;
+        border: 1px solid $light-color-2;
+        color: $light-color-2;
+
+        &:focus {
+            background-color: $light-color-2;
+            color: $primary-color;
+            outline: none;
+            &::placeholder{
+                color: $primary-color;
+            }
+        }
+
+        &::placeholder {
+            color: white;
+            font-weight: 200;
+        }
+
+        &-message {
+            height: 200%;        }
+    }
+
+    &__btn {
+        width: 60%;
+        background-color: $light-color-2;
+        color: $primary-color;
+        align-self: center;
+    }
+}
+
+
+.maps {
+    z-index: 100;
+    width: 70%;
+    height: 60%;
+    border-radius: 5px;
+    position: relative;
+
+    &__close {
+        position: absolute;
+        color: $light-color-2;
+        top:15%;
+        right: 12%;
+        font-size: 150%;
+    }
+    
+}

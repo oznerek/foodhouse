@@ -1,0 +1,80 @@
+.chefs {
+  display: flex;
+  background-color: $light-color-2;
+  color: $light-color-1;
+  margin: 0;
+  padding: 0;
+  @media only screen and (max-width: $tablet) {
+    flex-direction: column;
+  } 
+
+  &__left {
+    background-color: rgba($color: #000000, $alpha: .9);
+      width:35%;
+    margin: 0;
+    padding: 0;
+    @media only screen and (max-width: $tablet) {
+        display: none;
+         } 
+  }
+
+  &__container {
+      width: 65%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    @media only screen and (max-width: $tablet) {
+        width: 100%;
+      } 
+  }
+  &__img {
+    width: 100%;
+  }
+  &__header {
+    padding: 2rem 0;
+    font-size: 5rem;
+    font-weight: 800;
+    color: $primary-color;
+    // text-align: center;
+    @media only screen and (max-width: $tablet_land) {
+        transform: scale(.7);
+        padding: 1rem 0
+      } 
+  }
+  &__card {
+    width: 80%;
+    height: 10rem;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    margin: 0.5rem;
+    animation: moveInLeft 1s;
+
+    @media only screen and (max-width: $tablet_land) {
+        transform: scale(.8);
+      } 
+}
+
+  &__user {
+    padding: 1rem;
+    &-photo {
+      width: 7rem;
+      height: 7rem;
+      border-radius: 50%;
+      //    border: 2px solid $secondary-light;
+    }
+  }
+  &__data {
+      margin-left: 1rem;
+  }
+  &__name {
+    font-weight: 700;
+  }
+  &__description {
+      font-size: 80%;
+  }
+}
