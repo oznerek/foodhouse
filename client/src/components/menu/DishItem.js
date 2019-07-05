@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchDishDetails } from "../../actions";
-import Navigation from '../Navigation';
 
 class DishItem extends React.Component {
   constructor(props) {
@@ -51,6 +50,8 @@ class DishItem extends React.Component {
   handleChange(event) {
     this.setState({ sauce: event.target.value });
   }
+
+  
   sendOrder = this.sendOrder.bind(this);
 
   sendOrder(event) {
@@ -87,13 +88,11 @@ class DishItem extends React.Component {
         return response.json();
       })
       .then(function(data) {
-        console.log("User has added");
+        console.log("Order has added to database: basket");
       })
       .catch(function(err) {
         console.log(err);
       }); 
-
-      Navigation.fetchBasket();
   }
 
   renderExtrasList() {

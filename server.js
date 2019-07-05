@@ -18,7 +18,7 @@ connection.connect(function(err) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Save data in : basket
+//----------- Save data in : basket ------------------
 app.post("/menu", function(req, res) {
   let sendOrderToBasket = {
     dish_name: req.body.dish_name,
@@ -37,7 +37,29 @@ app.post("/menu", function(req, res) {
   });
 });
 
-// import data from: basket, need count for label in nav menu
+// -------- Save data in order_list ------------------------
+app.post("/order", function(req, res) {
+  let sendOrderToOrderList = {
+    user_id: req.body.user_id,
+    dish_name: req.body.dish_name,
+    dish_count: req.body.dish_count,
+    dish_extras: req.body.dish_extras,
+    dish_sauce: req.body.dish_sauce,
+    note: req.body.note,
+    unique_id: req.body.unique_id,
+    status: req.body.status,
+    total_price: req.body.total_price
+  };
+  connection.query("INSERT INTO order_list set ?", sendOrderToOrderList, function(
+    error,
+    data
+  ) {
+    error ? res.send(error) : res.json(data);
+  });
+});
+
+
+// -- Import data from: basket, need count for label in nav menu -----
 app.post("/basket", function(req, res, next) {
   let user_id = req.body.user_id;
   connection.query(
@@ -48,7 +70,7 @@ app.post("/basket", function(req, res, next) {
   );
 });
 
-// delete orders from basket
+//------------- Delete orders from basket --------------------
 app.delete("/menu", function(req, res, next) {
   let basket_id = req.body.basket_id;
   connection.query(
@@ -59,7 +81,7 @@ app.delete("/menu", function(req, res, next) {
   );
 });
 
-// Check data before login
+//------------- Check data before login ------------------
 app.post("/login", function(req, res, next) {
   let login = req.body.login;
   let password = req.body.password;

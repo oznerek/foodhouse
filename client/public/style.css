@@ -426,13 +426,14 @@ body::-webkit-scrollbar-thumb {
     border-bottom: 1.5px dotted; }
     .popup__header-name {
       font-size: 160%; }
-  .popup__order {
-    overflow: auto;
+  .popup__toogle {
     position: relative;
     padding: 1rem;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: center; }
+  .popup__order {
+    overflow: auto;
     border-bottom: 1.2px dotted #262626; }
   .popup__dish {
     padding: .5rem;
@@ -501,26 +502,15 @@ body::-webkit-scrollbar-thumb {
     height: 2rem;
     width: 2rem; }
   .popup__done {
-    padding: 5rem;
+    display: none;
+    padding: 2rem;
     color: #50ac0f;
-    font-size: 5rem;
+    font-size: 150%;
     text-align: center; }
-    @media only screen and (max-width: 48rem) {
-      .popup__done {
-        font-size: 3rem; } }
-    @media only screen and (max-width: 22.5rem) {
-      .popup__done {
-        font-size: 2rem; } }
     .popup__done-icon {
       color: #50ac0f;
-      font-size: 15rem;
+      font-size: 300%;
       text-align: center; }
-      @media only screen and (max-width: 48rem) {
-        .popup__done-icon {
-          font-size: 10rem; } }
-      @media only screen and (max-width: 22.5rem) {
-        .popup__done-icon {
-          font-size: 7rem; } }
 
 .empty__close {
   display: block;
@@ -555,6 +545,22 @@ body::-webkit-scrollbar-thumb {
   .overflow::-webkit-scrollbar-thumb {
     background-color: #d92a1a;
     border-radius: 50px; }
+
+.dish__note {
+  width: 100%;
+  text-align: center; }
+  .dish__note-input {
+    width: 80%;
+    background-color: #f2f2f2;
+    color: #262626;
+    box-shadow: 2px solid black;
+    font-size: 80%;
+    height: 7rem;
+    border-radius: 10px;
+    padding: .5rem; }
+    .dish__note-input:active, .dish__note-input:focus {
+      outline: none;
+      background-color: rgba(129, 128, 140, 0.1); }
 
 .footer {
   display: flex;

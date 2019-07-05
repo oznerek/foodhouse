@@ -1,21 +1,22 @@
 import React from "react";
+import $ from "jquery";
 
 class ShoppingBasket extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       basketList: [],
-      dish_cost: 0,
-      dish_count: 0,
-      total_price: 0,
-      user_id: localStorage.getItem('user_id')
+      totalPrice: 0,
+      unique_id: "",
+      user_id: localStorage.getItem("user_id")
     };
   }
 
   componentDidMount() {
     this.fetchBasket();
-  }
+    this.uniqueKey();
 
+  }
 
   fetchBasket() {
     fetch("/basket", {
@@ -23,7 +24,7 @@ class ShoppingBasket extends React.Component {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({user_id : this.state.user_id}) 
+      body: JSON.stringify({ user_id: this.state.user_id })
     })
       .then(response => {
         if (response.status >= 400) {
@@ -42,62 +43,213 @@ class ShoppingBasket extends React.Component {
           note: `${user.note}`
         }))
       )
-      .then(
-        basketList =>
-          this.setState({
-            basketList
-          }),
-        dish_cost => this.setState({ dish_cost }),
-        dish_count => this.setState({ dish_count })
+      .then(basketList =>
+        this.setState({
+          basketList
+        })
       )
-
       .catch(err => {
         console.log("caught it!", err);
       });
   }
 
-  increment = () => {
+  increment(x) {
     console.log("dodaj 1");
-    // this.state.basketList.dish_count + 1
-  };
-
-  decrement = () => {
-    if (this.item.dish_count > 1) {
-      // this.item.dish_count-1
-      console.log("odejmij 1");
-    }
-  };
-
-  deleteOrder = this.deleteOrder.bind(this)
-  deleteOrder(number) {
-    console.log('cokolwiek:',number)
-    this.delete(number)
+    console.log("state", x);
+    this.setState(prevState => ({
+      basketList: prevState.basketList.map(obj =>
+        obj.basket_id === x
+          ? Object.assign(obj, { dish_count: parseFloat(obj.dish_count) + 1 })
+          : obj
+      )
+    }));
   }
-  delete(number) {
-    console.log('number', number)
 
+  decrement(x) {
+    this.setState(prevState => ({
+      basketList: prevState.basketList.map(obj =>
+        obj.basket_id === x
+          ? Object.assign(
+              obj,
+              obj.dish_count > 1
+                ? { dish_count: parseFloat(obj.dish_count) - 1 }
+                : obj
+            )
+          : obj
+      )
+    }));
+  }
+
+  deleteOrder = this.deleteOrder.bind(this);
+  deleteOrder(number) {
+    this.delete(number);
+  }
+
+  delete(number) {
     fetch("/menu", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({basket_id : number}) 
+      body: JSON.stringify({ basket_id: number })
     })
       .then(response => {
         if (response.status >= 400) {
           throw new Error("Bad response from server");
         }
         return response.json();
-      }).catch(err => {
+      })
+      .catch(err => {
         console.log("caught it!", err);
       });
+    this.fetchBasket();
+  }
 
-      this.fetchBasket();
+  addNoteToDish = x => event => {
+    let userNote = event.target.value;
+    this.setState(prevState => ({
+      basketList: prevState.basketList.map(obj =>
+        obj.basket_id === x ? Object.assign(obj, { note: userNote }) : obj
+      )
+    }));
+  };
+
+  uniqueKey() {
+    let table = [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f",
+      "g",
+      "h",
+      "i",
+      "j",
+      "k",
+      "l",
+      "m",
+      "n",
+      "o",
+      "q",
+      "p",
+      "r",
+      "s",
+      "t",
+      "u",
+      "w",
+      "x",
+      "y",
+      "z",
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J",
+      "K",
+      "L",
+      "M",
+      "N",
+      "O",
+      "Q",
+      "P",
+      "R",
+      "S",
+      "T",
+      "U",
+      "W",
+      "X",
+      "Y",
+      "Z",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "0"
+    ];
+    let uniqKey = [];
+    for (let i = 0; i < 20; i++) {
+      let x = parseInt(Math.random() * 60);
+      uniqKey.push(table[x]);
     }
+    this.setState({ unique_id: uniqKey.join("") });
+  }
+
+  sendOrder = this.sendOrder.bind(this);
+  sendOrder() {
+    this.state.basketList.map(item => {
+      let orderName = item.dish_name;
+      let orderCost = parseFloat(item.dish_cost).toFixed(2);
+      let orderExtras = item.dish_extras;
+      let orderSauce = item.dish_sauce;
+      let orderCount = item.dish_count;
+      let user_id = localStorage.getItem("user_id");
+      let note = item.note;
+      let unique_id = this.state.unique_id;
+
+      let sendOrderToOrderList = {
+        dish_name: orderName,
+        dish_count: orderCount,
+        dish_extras: orderExtras,
+        dish_sauce: orderSauce,
+        total_price: orderCost,
+        user_id: user_id,
+        note: note,
+        unique_id: unique_id,
+        status: "ordered"
+      };
+
+      fetch("/order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(sendOrderToOrderList)
+      })
+        .then(function(response) {
+          if (response.status >= 400) {
+            throw new Error("Bad response from server");
+          }
+          return response.json();
+        })
+        .then(function(data) {
+          console.log("Order has added to database: order_list ");
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
+    });
+
+    $(".popup__done").css("display", "block");
+    $(".overflow").css("display", "none");
+    $(".popup__btn").attr('disabled', true)
+
+    setTimeout(function() {
+      window.location.href = "#";
+      $(".popup__done").css("display", "none");
+      $(".overflow").css("display", "block");
+      $(".popup__btn").attr('disabled', false)
+
+    }, 5000);
+  }
 
   render() {
     const { basketList } = this.state;
-    console.log(basketList);
+    let totalPrice = 0;
+    this.state.basketList.map(item => {
+      totalPrice += parseFloat(item.dish_cost * item.dish_count);
+    });
+
     return (
       // -----------------POP UP BASKET--------------------
       <div className="popup" id="popup_basket">
@@ -110,51 +262,82 @@ class ShoppingBasket extends React.Component {
                 <i className="far fa-times-circle toogle__btn" />
               </a>
             </div>
+            {/* POPUP  SEND ORDER- STATUS OK */}
+            <div className="popup__done">
+              <p>Success</p>
+              <i className="far fa-check-circle popup__done-icon " />
+              <p>Your order was added</p>
+            </div>
+
             <div className="overflow">
               {basketList.length > 0 ? (
                 basketList.map(item => {
+                  let collapseName = "#" + item.basket_id;
+
                   return (
                     <div
                       className="popup__order"
                       key={item.dish_name + item.dish_sauce}
                     >
-                      <div className="popup__dish">
-                        <p className="popup__dish-name">{item.dish_name}</p>
-                        <p className="popup__dish-extras">
-                          Extras: {item.dish_extras}
-                        </p>
-                        <p className="popup__dish-sauce">
-                          Sauce: {item.dish_sauce}
-                        </p>
-                      </div>
-                      <div className="popup__tabletsize">
-                        <div className="popup__change">
-                          <button
-                            className="popup__change-less"
-                            onClick={this.decrement}
-                          >
-                            -
-                          </button>
-                          <div className="popup__count">{item.dish_count}</div>
-                          <button
-                            className="popup__change-more"
-                            onClick={this.increment}
-                          >
-                            +
-                          </button>
+                      <div className="popup__toogle">
+                        <div className="popup__dish">
+                          <p className="popup__dish-name">{item.dish_name}</p>
+                          <p className="popup__dish-extras">
+                            Extras: {item.dish_extras}
+                          </p>
+                          <p className="popup__dish-sauce">
+                            Sauce: {item.dish_sauce}
+                          </p>
                         </div>
-                        <div className="popup__delete">
-                          {item.dish_cost} PLN
+                        <div className="popup__tabletsize">
                           <div className="popup__change">
-                            <i className="far fa-edit popup__icon" />
-                            <i className="far fa-trash-alt popup__icon" onClick={() => this.deleteOrder(item.basket_id)} />
+                            <button
+                              className="popup__change-less"
+                              onClick={() => this.decrement(item.basket_id)}
+                            >
+                              -
+                            </button>
+                            <div className="popup__count">
+                              {item.dish_count}
+                            </div>
+                            <button
+                              className="popup__change-more"
+                              onClick={() => this.increment(item.basket_id)}
+                            >
+                              +
+                            </button>
+                          </div>
+                          <div className="popup__delete">
+                            {(item.dish_cost * item.dish_count).toFixed(2)} PLN
+                            <div className="popup__change">
+                              <a data-toggle="collapse" href={collapseName}>
+                                {" "}
+                                <i className="far fa-edit popup__icon" />
+                              </a>
+                              <i
+                                className="far fa-trash-alt popup__icon"
+                                onClick={() => this.deleteOrder(item.basket_id)}
+                              />
+                            </div>
                           </div>
                         </div>
+                      </div>
+                      <div
+                        className="dish__note panel-collapse collapse"
+                        id={item.basket_id}
+                      >
+                        <textarea
+                          type="text"
+                          placeholder="Your additional wishes or other information (allergy etc.)"
+                          className="dish__note-input"
+                          onChange={this.addNoteToDish(item.basket_id)}
+                        />
                       </div>
                     </div>
                   );
                 })
               ) : (
+                // POP UP NO-ORDER
                 <div className="popup__basket">
                   <p className="empty__text">Your basket is empty</p>
                   <i className="fas fa-exclamation-circle empty__icon" />
@@ -163,11 +346,13 @@ class ShoppingBasket extends React.Component {
             </div>
             <div className="popup__total">
               <p>Total price:</p>
-              <p> 0 PLN</p>
+              <p> {totalPrice.toFixed(2)} PLN</p>
             </div>
           </div>
-          <a href="#">
-            <button className="popup__btn">ORDER</button>
+          <a>
+            <button className="popup__btn" onClick={this.sendOrder}>
+              ORDER
+            </button>
           </a>
         </div>
       </div>
@@ -176,26 +361,4 @@ class ShoppingBasket extends React.Component {
 }
 
 export default ShoppingBasket;
-// {
-//   /* --------------POPUP DONE ------------- */
-// }
-// {
-//   /* <div className="popup__basket">
-//           <p className="popup__done">Success</p>
-//           <i className="far fa-check-circle popup__done-icon "></i>
-//           <p className="popup__done">Your order was added</p>
-//       </div>  */
-// }
 
-// {
-//   /* -----------POPUP NO ORDER ------------  */
-// }
-// {
-//   /* <div className="popup__basket">
-//        <p className="empty__text">Your basket is empty</p>
-//         <i className="fas fa-exclamation-circle empty__icon"></i>
-//         <a href="#">
-//           <button className="popup__btn empty__btn">Make order</button>
-//         </a>
-//       </div>  */
-// }

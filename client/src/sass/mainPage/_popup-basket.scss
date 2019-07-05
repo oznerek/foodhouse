@@ -50,16 +50,18 @@
             font-size: 160%;
         }
     }
-    &__order{
-        overflow: auto;
+    &__toogle {
         position: relative;
         padding: 1rem;
         display: flex;
         justify-content: space-around;
         align-items: center;
-        border-bottom: 1.2px dotted $primary-color;
-
     }
+    &__order{
+        overflow: auto;
+        border-bottom: 1.2px dotted $primary-color;
+    }
+
     &__dish{
         padding: .5rem;
         width: 45%;
@@ -146,27 +148,16 @@
     }
 
     &__done {
-        padding:  5rem;
+        display: none;
+        padding:  2rem;
         color: $green-dark;
-        font-size: 5rem;
+        font-size: 150%;
         text-align: center;
-        @media only screen and (max-width: $tablet) {
-            font-size: 3rem;
-          } 
-          @media only screen and (max-width: $phone) {
-            font-size: 2rem;
-          } 
 
         &-icon{
             color: $green-dark;
-            font-size: 15rem;
+            font-size: 300%;
             text-align: center;
-            @media only screen and (max-width: $tablet) {
-                font-size: 10rem;
-              } 
-              @media only screen and (max-width: $phone) {
-                font-size: 7rem;
-              } 
         }
     }
 }
@@ -203,6 +194,7 @@
 }
 
 .overflow {
+
     overflow: auto;
     max-height:20rem; 
     &::-webkit-scrollbar {
@@ -213,4 +205,23 @@
       background-color: $secondary-light;
       border-radius: 50px;
       }
+}
+
+.dish__note {
+    width: 100%;
+    text-align: center;
+    &-input{
+        width: 80%;
+        background-color: $light-color-2;
+        color: $primary-color;
+        box-shadow: 2px solid black;
+        font-size: 80%;
+        height: 7rem;
+        border-radius: 10px;
+        padding: .5rem;
+        &:active, &:focus {
+            outline: none;
+            background-color: rgba($light-color-1, .1)
+        }
+    }
 }
