@@ -1,5 +1,5 @@
 import React from "react";
-import ShoppingBasket from "./menu/ShoppingBasket";
+import ShoppingBasket from '../menu/ShoppingBasket';
 import { NavLink} from "react-router-dom";
 
 class Navigation extends React.Component {
@@ -14,14 +14,13 @@ class Navigation extends React.Component {
     this.fetchBasket();
   }
 
-  
   fetchBasket() {
     fetch("/basket", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({user_id : 'jBzN1Fny0f8Dd826Y7gb'}) 
+      body: JSON.stringify({user_id : this.state.user_id}) 
     })
       .then(response => {
         if (response.status >= 400) {

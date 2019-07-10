@@ -1,8 +1,8 @@
 import React from "react";
 import MenuList from "./MenuList";
 import MenuListPhone from "./MenuListPhone";
-import Header from "../Header";
-import Navigation from "../Navigation";
+import Header from "../home/Header";
+import Navigation from "../home/Navigation";
 
 import DishList from "./DishList";
 import { fetchMenu } from "../../actions";

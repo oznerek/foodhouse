@@ -1212,6 +1212,15 @@ li {
     opacity: 1;
     transform: translate(0); } }
 
+.author {
+  display: flex;
+  align-items: center;
+  padding: 5rem;
+  font-size: 300%;
+  width: 100%;
+  background-color: orangered;
+  background-size: cover; }
+
 .login {
   background-image: url(../img/contact.jpg);
   background-size: cover;

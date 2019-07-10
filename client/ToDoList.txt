@@ -1,16 +1,15 @@
  !! IMPORTANT !! 
 
+-   automatycznie odswiezanie licznika w koszyku wyswietlanego w nawigacji
+    po wprowadzeniu nowego zamowienia, badz, jego usunieciu z koszyka.
+    (   = zrobić licznik? 
+        = sprawdzac stan bazy danych co X sekund i renderowac 
+        jesli sa zmiany?
+        = wywolywac jakis trigger zaraz po wyslaniu danych ?
+    )
+
+-   Contact, poprawić wersje robocza wysylania formularza. Sprawdzać wprowadzone dane 
+    czy sa poprawne (szczególnie EMAIL!). Zmienic alert na popup z krotka wiadomoscia.
+    
+
 -   animacje maja sie uruchamiac po dojechaniu do nich!!
-
--   stworzyc baze danych komentarzy, losować randomowo i wyswietlac na stronie głownej,
-
--   
-
--   Dodać mapy google w contact
-
-- 
-
-
--  local storage( przetrzymywac "klucz uzytkownika" dla koszyka), sprawdzić czy
-    istnieje, jesli nie wygenerować i dodać, przy dodawaniu zamowień uzywac danego klucza
-    na jego podstawie wyświetlać artykuły w koszyku

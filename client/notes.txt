@@ -101,4 +101,3 @@
       delay: 400,
       easing: "ease-out"
     });
-  

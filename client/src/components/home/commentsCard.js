@@ -1,22 +1,27 @@
 import React from 'react';
 
 class CommentCard extends React.Component {
+  constructor(props) {
+    super(props);
+  }
     render() {
+      let comment = this.props.commentsid;
         return (
-            <div className="customers-card">
+          comment !== undefined? (
+          <div className="customers-card">
             <div className="customers-card-header">
               <div className="customers-card-header2">
                 <div className="customers-card__user">
                   <img
-                    src="img/france.jpg"
+                    src="img/user.png"
                     alt="Ito Tanaka"
                     className="customers-card__user-photo"
                   />
                 </div>
                 <div className="customers-card__user-data">
-                  <h2 className="customers-card__user-name">Jessica Brown</h2>
+                  <h2 className="customers-card__user-name">{comment.user_name} {comment.user_lastname}</h2>
                   <p className="customers-card__user-date">
-                    13<sup>th</sup> May 2018
+                    {comment.data.slice(0,10)}
                   </p>
                 </div>
               </div>
@@ -31,14 +36,13 @@ class CommentCard extends React.Component {
               </div>
             </div>
             <p className="customers-card__comments">
-              " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit
-              mollitia ab, atque, officiis maiores asperiores dolorem odio quo
-              dolorum! "
+              "{comment.comments} "
             </p>
           </div>
         )
-    }
-
+        : (<div>brak danych</div>)
+        )
+        }
 
 }
 

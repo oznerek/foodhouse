@@ -70,6 +70,18 @@ app.post("/basket", function(req, res, next) {
   );
 });
 
+// ------------ Select random comments -----------------------
+app.get("/comments", function(req, res) {
+  let user_id = req.body.user_id;
+  connection.query(
+    `SELECT * FROM customers_comments`,
+    function(error, results) {
+      error ? res.send(error) : res.send(JSON.stringify(results));
+    }
+  );
+});
+
+
 //------------- Delete orders from basket --------------------
 app.delete("/menu", function(req, res, next) {
   let basket_id = req.body.basket_id;

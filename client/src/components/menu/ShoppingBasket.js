@@ -187,6 +187,8 @@ class ShoppingBasket extends React.Component {
 
   sendOrder = this.sendOrder.bind(this);
   sendOrder() {
+    this.state.basketList.length > 0 ?
+(
     this.state.basketList.map(item => {
       let orderName = item.dish_name;
       let orderCost = parseFloat(item.dish_cost).toFixed(2);
@@ -209,29 +211,9 @@ class ShoppingBasket extends React.Component {
         status: "ordered"
       };
 
-      fetch("/order", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(sendOrderToOrderList)
-      })
-        .then(function(response) {
-          if (response.status >= 400) {
-            throw new Error("Bad response from server");
-          }
-          return response.json();
-        })
-        .then(function(data) {
-          console.log("Order has added to database: order_list ");
-        })
-        .catch(function(err) {
-          console.log(err);
-        });
-    });
 
-    $(".popup__done").css("display", "block");
-    $(".overflow").css("display", "none");
+    $(".popup__done").css("display", "block")
+    $(".overflow").css("display", "none")
     $(".popup__btn").attr('disabled', true)
 
     setTimeout(function() {
@@ -241,6 +223,29 @@ class ShoppingBasket extends React.Component {
       $(".popup__btn").attr('disabled', false)
 
     }, 5000);
+
+    fetch("/order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(sendOrderToOrderList)
+    })
+      .then(function(response) {
+        if (response.status >= 400) {
+          throw new Error("Bad response from server");
+        }
+        return response.json();
+      })
+      .then(function(data) {
+        console.log("Order has added to database: order_list ");
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+  })
+   )   :       window.location.href = "/menu";
+
   }
 
   render() {
