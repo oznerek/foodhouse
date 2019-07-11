@@ -1,7 +1,7 @@
 {
     "name": "food-house",
     "version": "1.0.0",
-    "homepage": "https://oznerek.github.io/food-house",
+    "homepage": "https://oznerek.github.io/foodhouse",
     "scripts": {
         "sass": "cd client && npm run compile:sass",
         "client": "cd client && npm start",
