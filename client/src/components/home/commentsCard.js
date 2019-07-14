@@ -14,7 +14,7 @@ class CommentCard extends React.Component {
                 <div className="customers-card__user">
                   <img
                     src="img/user.png"
-                    alt="Ito Tanaka"
+                    alt="User photo"
                     className="customers-card__user-photo"
                   />
                 </div>

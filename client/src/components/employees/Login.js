@@ -1,5 +1,6 @@
 import React from "react";
 import $ from 'jquery'
+import Employee from './EmployeeMenuList'
 
 class Login extends React.Component {
   constructor(props) {
@@ -8,7 +9,8 @@ class Login extends React.Component {
       login: "",
       password: "",
       department: "Kitchen",
-      errorLabelText : ''
+      errorLabelText : '',
+      status: true
 
     };
   }
@@ -26,13 +28,13 @@ class Login extends React.Component {
     let login = this.state.login;
     let password = this.state.password;
     let database = this.state.department;
+    
     if (login && password) {
       let userData = {
         login: login,
         password: password,
         database: database
       };
-      console.log(userData);
       fetch("/login", {
         method: "POST",
         headers: {
@@ -45,10 +47,13 @@ class Login extends React.Component {
         })
         .then(data => {
           if (data.length > 0) {
+
             $('.errorLogin').css('display','none');
-            window.location.href='/employee'
+            window.location.href='/employee';         
+               return ( <Employee loginData={this.state.login} />);
+
+
           } else {
-            console.log("wprowadziles niepoprane dane");
             this.setState({errorLabelText: 'Incorrect Login or Password'});
             $('.errorLogin').css('display','block')
           }
@@ -60,8 +65,9 @@ class Login extends React.Component {
       this.setState({errorLabelText: 'Please complete all fields'});
       $('.errorLogin').css('display','block');
     }
-
   }
+
+
   render() {
     return (
       <div className="login">

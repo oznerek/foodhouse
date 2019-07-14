@@ -99,7 +99,7 @@ app.post("/login", function(req, res, next) {
   let password = req.body.password;
   let database = req.body.database;
   connection.query(
-    `SELECT * FROM ${database}_db WHERE login = '${login}' and password = '${password}'`,
+    `SELECT * FROM ${database}_db WHERE login LIKE BINARY '${login}' and password LIKE BINARY '${password}'`,
     function(err, data, fields) {
       err ? res.send(err) : res.json(data);
       if (data.length > 0) {

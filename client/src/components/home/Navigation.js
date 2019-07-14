@@ -1,6 +1,7 @@
 import React from "react";
 import ShoppingBasket from '../menu/ShoppingBasket';
 import { NavLink} from "react-router-dom";
+import $ from 'jquery';
 
 class Navigation extends React.Component {
   constructor(props) {
@@ -12,6 +13,9 @@ class Navigation extends React.Component {
   }
   componentDidMount(){
     this.fetchBasket();
+  }
+  componentDidUpdate() {
+    this.color();
   }
 
   fetchBasket() {
@@ -38,6 +42,14 @@ class Navigation extends React.Component {
       });
   }
 
+  color() {
+    if(this.state.numberOfDish > 0) {
+      $('.basket__label').css({'background-color': 'red', 'color': 'white'});
+    } else {
+      $('.basket__label').css({'background-color': '$light-color-2', 'color':'$primary-color'});
+
+    }
+  }
 
   render() {
     return (

@@ -354,11 +354,11 @@ class ShoppingBasket extends React.Component {
               <p> {totalPrice.toFixed(2)} PLN</p>
             </div>
           </div>
-          <a>
+         
             <button className="popup__btn" onClick={this.sendOrder}>
               ORDER
             </button>
-          </a>
+          
         </div>
       </div>
     );

@@ -1,0 +1,81 @@
+.edit {
+    width: 100%;
+    border-top: 1px solid $primary-color;
+
+    &__navigation {
+        &-item{
+            text-align: center;
+            display: inline-block;
+            margin: 0 .1rem;
+            width: 30%;
+            background-color: $light-color-2;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            color: $primary-color;
+            cursor: pointer;
+        }
+    }
+    &Active {
+        background-color: $secondary-light;
+        color: $light-color-2; 
+    }
+}
+
+.profile {
+    &__form {
+        padding: 3rem;
+    }
+
+    &__input {
+        background-color: $light-color-2;
+        border: none;
+        border-radius: 5px;
+        width: 35%;
+        margin: 1rem 1rem 1rem 0;
+        padding-left: 1.5rem;
+        @media only screen and (max-width: $tablet) {
+            margin: 0;
+            margin-bottom: 1rem; 
+            width: 90%;
+            height: 2rem;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+    &__label {
+        width:25%;
+        @media only screen and (max-width: $tablet) {
+            width: 40%
+        }
+    }
+
+    &__validation {
+        background-color: $light-color-2;
+        border-radius: 5px;
+        color: $secondary-light;
+        width: 60%;
+        text-align: center;
+        visibility: hidden;
+        @media only screen and (max-width: $tablet) {
+            width: 90%;
+            height: 3rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__btn {
+        width: 35%;
+        margin-left: 25%;
+        @media only screen and (max-width: $tablet) {
+            width: 90%;
+            margin: 0;
+            margin-top: 1rem;
+        }
+        &:hover {
+            background-color: $secondary-light;
+        }
+    }
+}
+ 

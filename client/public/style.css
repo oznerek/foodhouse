@@ -131,7 +131,7 @@ body::-webkit-scrollbar-thumb {
   height: 1.8rem;
   border-radius: 50px;
   background-color: #f2f2f2;
-  color: #81808c;
+  color: #262626;
   position: absolute;
   top: .3rem;
   right: 0; }
@@ -1371,42 +1371,59 @@ li {
       margin-left: 1rem; }
 
 .employee {
+  position: relative;
   display: flex;
   justify-content: space-between;
-  height: 60rem; }
+  min-height: 65rem; }
   .employee > .notLogin {
     margin-top: 5rem;
     justify-content: center; }
   .employee__navigation {
+    position: relative;
+    width: 20%;
+    background-color: #d92a1a;
+    border-top-right-radius: 70px; }
+    @media only screen and (max-width: 48rem) {
+      .employee__navigation {
+        position: absolute;
+        width: 100%;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 40px; } }
+    .employee__navigation-1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      width: 75%;
+      height: 100%;
+      border-top-right-radius: 70px;
+      background-color: #262626; }
+      @media only screen and (max-width: 48rem) {
+        .employee__navigation-1 {
+          flex-direction: row;
+          width: 100%;
+          border-top-right-radius: 0px;
+          border-bottom-right-radius: 50px;
+          height: 70%; } }
+  .employee__user {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    width: 10%;
-    background-color: #262626;
-    border-top-right-radius: 70px; }
-    @media only screen and (max-width: 56.25rem) {
-      .employee__navigation {
-        width: 15%; } }
-    @media only screen and (max-width: 22.5rem) {
-      .employee__navigation {
-        width: 20%; } }
-    .employee__navigation-1 {
-      position: absolute;
-      width: 14%;
-      min-height: 60rem;
-      z-index: -1;
-      background-color: #d92a1a;
-      height: max-content;
-      border-top-right-radius: 70px; }
-      @media only screen and (max-width: 56.25rem) {
-        .employee__navigation-1 {
-          width: 20%; } }
-      @media only screen and (max-width: 22.5rem) {
-        .employee__navigation-1 {
-          width: 27%; } }
+    margin-top: 5rem; }
+    .employee__user-name {
+      align-self: center;
+      flex-direction: column; }
+      @media only screen and (max-width: 48rem) {
+        .employee__user-name {
+          margin: 0 4rem 0 1rem; } }
+    @media only screen and (max-width: 48rem) {
+      .employee__user {
+        margin: 1rem 1rem .5rem;
+        flex-direction: row;
+        align-items: flex-start; } }
   .employee__photo {
-    margin-top: 5rem;
     width: 7.5rem;
     height: 7.5rem;
     border-radius: 100%;
@@ -1418,52 +1435,168 @@ li {
         height: 5rem; } }
   .employee__workspace {
     max-height: 56rem;
-    margin-top: 4rem;
     width: 86%;
     overflow: auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
     align-self: flex-start; }
-    @media only screen and (max-width: 56.25rem) {
-      .employee__workspace {
-        grid-template-columns: repeat(3, 1fr);
-        width: 80%; } }
     @media only screen and (max-width: 48rem) {
       .employee__workspace {
-        grid-template-columns: repeat(2, 1fr); } }
+        margin-top: 12rem;
+        max-height: 46rem;
+        width: 100%; } }
     @media only screen and (max-width: 22.5rem) {
       .employee__workspace {
-        grid-template-columns: 1fr;
-        width: 73%; } }
+        margin-top: 11rem;
+        min-height: 48rem; } }
+  .employee__orderList {
+    margin-top: 4rem;
+    width: 100%;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); }
+    @media only screen and (max-width: 56.25rem) {
+      .employee__orderList {
+        grid-template-columns: repeat(3, 1fr); } }
+    @media only screen and (max-width: 48rem) {
+      .employee__orderList {
+        grid-template-columns: repeat(2, 1fr); } }
+    @media only screen and (max-width: 22.5rem) {
+      .employee__orderList {
+        grid-template-columns: 1fr; } }
 
 .addNewOrder {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
   padding-left: 5%; }
   .addNewOrder__icon {
     font-size: 180%;
     margin-top: 5rem;
-    padding: .5rem; }
+    padding: 0.5rem;
+    justify-self: center; }
+    @media only screen and (max-width: 48rem) {
+      .addNewOrder__icon {
+        padding: 0;
+        width: 10rem;
+        justify-content: space-between;
+        display: flex;
+        margin-top: 8rem;
+        margin-right: 5rem; } }
+    @media only screen and (max-width: 48rem) {
+      .addNewOrder__icon {
+        width: 6rem; } }
     .addNewOrder__icon i {
       cursor: pointer; }
-    @media only screen and (max-width: 56.25rem) {
-      .addNewOrder__icon {
-        font-size: 180%; } }
 
 .userMenu {
-  width: 100%;
+  width: 80%;
   margin-bottom: 5rem;
   display: flex;
   justify-content: space-around;
   cursor: pointer; }
+  @media only screen and (max-width: 48rem) {
+    .userMenu {
+      margin: 0 3rem 0 0;
+      width: 5%;
+      justify-content: space-around;
+      flex-direction: column; }
+      .userMenu i {
+        margin-right: 2rem; } }
 
-.notLogin {
+.logout {
   display: flex;
   flex-direction: column;
-  justify-self: center;
   height: max-content;
   background-color: #f2f2f2;
   color: #d92a1a;
   border-radius: 10px;
   padding: 1rem;
   border: 2px solid #d92a1a; }
+  .logout__btn {
+    margin-top: 1rem;
+    align-self: center; }
+
+.decoration {
+  position: absolute;
+  bottom: 1rem;
+  right: 8rem;
+  transform: rotate(42deg);
+  z-index: -1; }
+  .decoration1, .decoration2, .decoration3 {
+    border-radius: 15px;
+    border: 5px solid rgba(217, 42, 26, 0.2); }
+  .decoration1, .decoration3 {
+    width: 6rem;
+    height: 6rem;
+    margin: 0.5rem 0; }
+  .decoration2 {
+    width: 12rem;
+    height: 12rem; }
+  .decoration3 {
+    margin-left: 6rem; }
+
+.edit {
+  width: 100%;
+  border-top: 1px solid #262626; }
+  .edit__navigation-item {
+    text-align: center;
+    display: inline-block;
+    margin: 0 .1rem;
+    width: 30%;
+    background-color: #f2f2f2;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: #262626;
+    cursor: pointer; }
+  .editActive {
+    background-color: #d92a1a;
+    color: #f2f2f2; }
+
+.profile__form {
+  padding: 3rem; }
+
+.profile__input {
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 5px;
+  width: 35%;
+  margin: 1rem 1rem 1rem 0;
+  padding-left: 1.5rem; }
+  @media only screen and (max-width: 48rem) {
+    .profile__input {
+      margin: 0;
+      margin-bottom: 1rem;
+      width: 90%;
+      height: 2rem; } }
+  .profile__input:focus {
+    outline: none; }
+
+.profile__label {
+  width: 25%; }
+  @media only screen and (max-width: 48rem) {
+    .profile__label {
+      width: 40%; } }
+
+.profile__validation {
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  color: #d92a1a;
+  width: 60%;
+  text-align: center;
+  visibility: hidden; }
+  @media only screen and (max-width: 48rem) {
+    .profile__validation {
+      width: 90%;
+      height: 3rem;
+      margin-bottom: 2rem; } }
+
+.profile__btn {
+  width: 35%;
+  margin-left: 25%; }
+  @media only screen and (max-width: 48rem) {
+    .profile__btn {
+      width: 90%;
+      margin: 0;
+      margin-top: 1rem; } }
+  .profile__btn:hover {
+    background-color: #d92a1a; }
