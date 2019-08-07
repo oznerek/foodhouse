@@ -1,0 +1,11 @@
+{
+  "main.js": "/foodhouse/static/js/main.eea9e882.chunk.js",
+  "main.js.map": "/foodhouse/static/js/main.eea9e882.chunk.js.map",
+  "static/js/1.f2e40960.chunk.js": "/foodhouse/static/js/1.f2e40960.chunk.js",
+  "static/js/1.f2e40960.chunk.js.map": "/foodhouse/static/js/1.f2e40960.chunk.js.map",
+  "runtime~main.js": "/foodhouse/static/js/runtime~main.f07fa6b4.js",
+  "runtime~main.js.map": "/foodhouse/static/js/runtime~main.f07fa6b4.js.map",
+  "index.html": "/foodhouse/index.html",
+  "precache-manifest.8157a6a6623ef6f91a32d86504158ee0.js": "/foodhouse/precache-manifest.8157a6a6623ef6f91a32d86504158ee0.js",
+  "service-worker.js": "/foodhouse/service-worker.js"
+}
