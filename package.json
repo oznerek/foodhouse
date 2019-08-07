@@ -8,7 +8,7 @@
         "server": "nodemon server.js",
         "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\" \"npm run sass\"",
         "predeploy": "cd client && npm run build",
-        "deploy": "gh-pages -d build"
+        "deploy": "cd client && gh-pages -d build"
     },
     "dependencies": {
         "body-parser": "^1.18.3",

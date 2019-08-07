@@ -1,11 +1,11 @@
 {
-  "main.js": "/static/js/main.eea9e882.chunk.js",
-  "main.js.map": "/static/js/main.eea9e882.chunk.js.map",
-  "static/js/1.f2e40960.chunk.js": "/static/js/1.f2e40960.chunk.js",
-  "static/js/1.f2e40960.chunk.js.map": "/static/js/1.f2e40960.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
-  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
-  "index.html": "/index.html",
-  "precache-manifest.7385900dd7c007c5d5eb2535b1564f9f.js": "/precache-manifest.7385900dd7c007c5d5eb2535b1564f9f.js",
-  "service-worker.js": "/service-worker.js"
+  "main.js": "/foodhouse/static/js/main.eea9e882.chunk.js",
+  "main.js.map": "/foodhouse/static/js/main.eea9e882.chunk.js.map",
+  "static/js/1.f2e40960.chunk.js": "/foodhouse/static/js/1.f2e40960.chunk.js",
+  "static/js/1.f2e40960.chunk.js.map": "/foodhouse/static/js/1.f2e40960.chunk.js.map",
+  "runtime~main.js": "/foodhouse/static/js/runtime~main.f07fa6b4.js",
+  "runtime~main.js.map": "/foodhouse/static/js/runtime~main.f07fa6b4.js.map",
+  "index.html": "/foodhouse/index.html",
+  "precache-manifest.8157a6a6623ef6f91a32d86504158ee0.js": "/foodhouse/precache-manifest.8157a6a6623ef6f91a32d86504158ee0.js",
+  "service-worker.js": "/foodhouse/service-worker.js"
 }
