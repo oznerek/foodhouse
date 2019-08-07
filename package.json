@@ -7,7 +7,7 @@
         "client": "cd client && npm start",
         "server": "nodemon server.js",
         "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\" \"npm run sass\"",
-        "predeploy": "npm run build",
+        "predeploy": "cd client && npm run build",
         "deploy": "gh-pages -d build"
     },
     "dependencies": {
