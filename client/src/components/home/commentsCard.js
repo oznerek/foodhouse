@@ -1,9 +1,7 @@
 import React from 'react';
 
 class CommentCard extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+
     render() {
       let comment = this.props.commentsid;
         return (
@@ -14,7 +12,7 @@ class CommentCard extends React.Component {
                 <div className="customers-card__user">
                   <img
                     src="img/user.png"
-                    alt="User photo"
+                    alt="User"
                     className="customers-card__user-photo"
                   />
                 </div>

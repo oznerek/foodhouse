@@ -1,4 +1,5 @@
 .socialmedia {
+  position: relative;
   background-color: $light-color-1;
   display: flex;
   flex-direction: column;
@@ -37,14 +38,11 @@
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: 40rem;
-    // justify-self: center;
-    // align-self: center;
   }
 
   &__photo {
     width: 100%;
   }
-
   &__links {
     a {
       color: $light-color-2;

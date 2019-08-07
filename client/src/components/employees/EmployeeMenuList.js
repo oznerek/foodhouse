@@ -8,7 +8,7 @@ class EmployeeMenuPanel extends React.Component {
     super(props);
     this.state = {
       logedIn: true,
-      workSpaceView: "editdata"
+      workSpaceView: "addneworder"
     };
   }
 
@@ -81,7 +81,7 @@ class EmployeeMenuPanel extends React.Component {
             <div className="employee__user">
               <img
                 src="img/user.png"
-                alt="User photo"
+                alt="User"
                 className="employee__photo"
               />
               <div className='employee__user-name'>

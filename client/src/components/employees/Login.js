@@ -80,7 +80,7 @@ class Login extends React.Component {
               <div className="tooltips__text">
                 <div> Use this data for login:</div>
                 <div> For Kitchen: <div>login: Kitchen1, password: Kitchen1234'</div></div>
-                <div> For Staff:<div>login: Staff1, password: Staff1234</div> login: Staff1, password: Staff1234</div>
+                <div> For Staff:<div>login: Staff1, password: Staff1234</div></div>
                 <div> For Admin:<div>login: Admin1, password: Admin1234</div> </div>
               </div>
             </i>

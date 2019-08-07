@@ -780,6 +780,7 @@ li {
   background-color: orangered; }
 
 .socialmedia {
+  position: relative;
   background-color: #81808c;
   display: flex;
   flex-direction: column; }
@@ -1039,7 +1040,8 @@ li {
     height: 50%;
     background-image: url(../img/decor2.jpg);
     background-size: cover;
-    background-position: center center; }
+    background-position: center center;
+    z-index: 2; }
     @media only screen and (max-width: 75rem) {
       .design__secondimage {
         right: 1rem;
@@ -1600,3 +1602,40 @@ li {
       margin-top: 1rem; } }
   .profile__btn:hover {
     background-color: #d92a1a; }
+
+.neworder {
+  display: flex;
+  width: 100%;
+  padding: 1.5rem; }
+  .neworder__form {
+    padding: .5rem;
+    width: 75%; }
+    @media only screen and (max-width: 48rem) {
+      .neworder__form {
+        width: 60%; } }
+  .neworder__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: .5rem;
+    width: 25%; }
+    @media only screen and (max-width: 48rem) {
+      .neworder__list {
+        width: 40%; } }
+  .neworder__select {
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 50px;
+    height: 2rem;
+    background-color: #f2f2f2; }
+  .neworder textarea {
+    border-radius: 10px;
+    height: 5rem; }
+  .neworder .employee__orderList {
+    margin: 0; }
+
+.addorder {
+  width: 100%;
+  border: none; }

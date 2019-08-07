@@ -1,0 +1,49 @@
+.neworder {
+    display: flex;
+    width: 100%;
+    padding: 1.5rem;
+
+    &__form{
+        padding: .5rem;
+        width: 75%;
+        @media only screen and (max-width: $tablet) {
+            width: 60%;
+        }
+
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        padding: .5rem;
+        width: 25%;
+        @media only screen and (max-width: $tablet) {
+            width: 40%;
+        }
+    }
+
+    &__select {
+        display: block;
+        width: 100%;
+        border: none;
+        border-radius: 50px;
+        height: 2rem;
+        background-color: $light-color-2;
+    }
+    textarea {
+        border-radius: 10px;
+        height: 5rem;
+    }
+    .employee__orderList {
+        margin: 0;
+    }
+
+
+}
+
+.addorder {
+    width: 100%;
+    border: none;
+}

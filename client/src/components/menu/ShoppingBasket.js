@@ -189,7 +189,7 @@ class ShoppingBasket extends React.Component {
   sendOrder() {
     this.state.basketList.length > 0 ?
 (
-    this.state.basketList.map(item => {
+    this.state.basketList.forEach(item => {
       let orderName = item.dish_name;
       let orderCost = parseFloat(item.dish_cost).toFixed(2);
       let orderExtras = item.dish_extras;
@@ -251,7 +251,7 @@ class ShoppingBasket extends React.Component {
   render() {
     const { basketList } = this.state;
     let totalPrice = 0;
-    this.state.basketList.map(item => {
+    this.state.basketList.forEach(item => {
       totalPrice += parseFloat(item.dish_cost * item.dish_count);
     });
 
