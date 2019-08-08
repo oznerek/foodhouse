@@ -80,8 +80,7 @@ class ShoppingBasket extends React.Component {
     }));
   }
 
-  deleteOrder = this.deleteOrder.bind(this);
-  deleteOrder(number) {
+  deleteOrder = (number) => {
     this.delete(number);
   }
 
@@ -185,8 +184,7 @@ class ShoppingBasket extends React.Component {
     this.setState({ unique_id: uniqKey.join("") });
   }
 
-  sendOrder = this.sendOrder.bind(this);
-  sendOrder() {
+  sendOrder = () => {
     this.state.basketList.length > 0 ?
 (
     this.state.basketList.forEach(item => {
@@ -244,7 +242,7 @@ class ShoppingBasket extends React.Component {
         console.log(err);
       });
   })
-   )   :       window.location.href = "/menu";
+   )   :       window.location.href = `${process.env.PUBLIC_URL}/menu`;
 
   }
 

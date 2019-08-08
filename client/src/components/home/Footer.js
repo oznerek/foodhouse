@@ -7,7 +7,7 @@ const Footer = () => {
       <p>
         Copyright by Michał Oznerek <sup>&copy;</sup> - 2019
       </p>
-      <a href="michaloznerek" className="footer__link">
+      <a href='https://oznerek.github.io/portfolio/' className="footer__link">
         {" "}
         Contact{" "}
       </a>

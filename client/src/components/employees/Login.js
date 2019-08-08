@@ -49,7 +49,7 @@ class Login extends React.Component {
           if (data.length > 0) {
 
             $('.errorLogin').css('display','none');
-            window.location.href='/employee';         
+            window.location.href=`${process.env.PUBLIC_URL}/employee`;         
                return ( <Employee loginData={this.state.login} />);
 
 

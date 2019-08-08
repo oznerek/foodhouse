@@ -28,8 +28,7 @@ class DishItem extends React.Component {
     }
   };
 
-  addExtras = this.addExtras.bind(this);
-  addExtras(event) {
+  addExtras = (event) => {
     let { name } = event.target;
     let priceForSelectedExtras  = parseFloat(event.target.value); //price of the selected extras
 
@@ -46,15 +45,11 @@ class DishItem extends React.Component {
     });
   }
 
-  handleChange = this.handleChange.bind(this);
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({ sauce: event.target.value });
   }
 
-  
-  sendOrder = this.sendOrder.bind(this);
-
-  sendOrder(event) {
+  sendOrder = (event) => {
     event.preventDefault();
     let orderName = this.props.onItem.title;
     let orderCost = (parseFloat(this.props.price) + this.state.extrasCost).toFixed(2);

@@ -31,20 +31,16 @@ class EmployeeMenuPanel extends React.Component {
       return <div> Opps something is wrong </div>;
     }
   }
-  orderList = this.orderList.bind(this);
-  orderList() {
+  orderList =() => {
     this.setState({ workSpaceView: "orders" });
   }
-  editData = this.editData.bind(this);
-  editData() {
+  editData = () => {
     this.setState({ workSpaceView: "editdata" });
   }
-  addNewOrder = this.addNewOrder.bind(this);
-  addNewOrder() {
+  addNewOrder = () => {
     this.setState({ workSpaceView: "addneworder" });
   }
-  logOut = this.logOut.bind(this);
-  logOut() {
+  logOut = () => {
     this.setState({ logedIn: false });
   }
 
