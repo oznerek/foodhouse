@@ -4,7 +4,7 @@
     background-size: cover;
     background-position: center center;
     position: relative;
-    filter: contrast(130%);
+    filter: contrast(130%); 
 
     @media only screen and (max-width: $tablet) {
         height: 60vh;

@@ -1,7 +1,7 @@
 // CUSTOMERS ------------------------------------//
 .slidephoto {
   position: relative;
-  overflow: hidden;
+  overflow: hidden; 
   height: 60rem;
   background-color: $primary-color;
   @media only screen and (max-width: $tablet) {
@@ -69,7 +69,7 @@ li {
   @media only screen and (max-width: $tablet) {
    font-size: 250%; 
   }
-}
+} 
 .slideshow li:nth-child(1) span {
   background-image: url(img/customers.jpg);
 }
