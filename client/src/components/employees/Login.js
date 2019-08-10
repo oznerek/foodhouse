@@ -1,6 +1,7 @@
 import React from "react";
-import $ from 'jquery'
-import Employee from './EmployeeMenuList'
+import $ from 'jquery';
+import Employee from './EmployeeMenuList';
+import {Redirect} from 'react-router-dom';
 
 class Login extends React.Component {
   constructor(props) {
@@ -47,8 +48,10 @@ class Login extends React.Component {
           if (data.length > 0) {
 
             $('.errorLogin').css('display','none');
-            window.location.href=`/employee`;         
-               return ( <Employee loginData={this.state.login} />);
+            window.location.href=`/employee`; 
+                    
+               return ( 
+                <Employee loginData={this.state.login} />);
 
 
           } else {

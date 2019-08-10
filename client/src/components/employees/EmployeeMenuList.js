@@ -2,12 +2,13 @@ import React from "react";
 import EmployeeOrder from "./EmployeeOrder";
 import EmployeeEditData from "./EmlopeeEditData";
 import EmployeeAddOrder from "./EmployeeAddOrder";
+import {NavLink} from 'react-router-dom';
 
 class EmployeeMenuPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      logedIn: false,
+      logedIn: true,
       workSpaceView: "addneworder"
     };
   }
@@ -51,10 +52,9 @@ class EmployeeMenuPanel extends React.Component {
           <div className="logout">
             <span>Oops, you must be login to see this page</span>
             <span className="logout__btn">
-              <a className="btn" href="/login">
-                {" "}
+                <NavLink className='btn' exact to ='/login'>
                 Sign In
-              </a>
+                </NavLink>
             </span>
           </div>
         </div>
