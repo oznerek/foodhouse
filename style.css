@@ -523,6 +523,8 @@ body::-webkit-scrollbar-thumb {
   color: #262626;
   text-align: center;
   font-size: 200%; }
+  .empty__text-demo {
+    font-size: 80%; }
 
 .empty__icon {
   color: #d92a1a;
@@ -587,6 +589,9 @@ body::-webkit-scrollbar-thumb {
   .footer__author, .footer__powered {
     display: flex;
     justify-content: center; }
+    .footer__author a, .footer__powered a {
+      text-decoration: none;
+      color: #81808c; }
   .footer__powered {
     font-size: 50%; }
 
@@ -1164,6 +1169,15 @@ li {
     background-color: #f2f2f2;
     color: #262626;
     align-self: center; }
+  .message .validate {
+    width: 100%;
+    font-weight: 100;
+    color: red;
+    visibility: hidden; }
+    .message .validate__email {
+      font-weight: 100;
+      display: none;
+      text-align: end; }
 
 .maps {
   z-index: 100;
