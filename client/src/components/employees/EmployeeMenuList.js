@@ -7,7 +7,7 @@ class EmployeeMenuPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      logedIn: true,
+      logedIn: false,
       workSpaceView: "addneworder"
     };
   }

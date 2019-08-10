@@ -31,6 +31,10 @@
     &__powered {
         display: flex;
         justify-content: center;
+        a{
+            text-decoration: none;
+            color: $light-color-1;
+        }
     }
     &__powered {
         font-size: 50%;

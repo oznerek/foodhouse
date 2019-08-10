@@ -15,15 +15,13 @@ class Login extends React.Component {
     };
   }
 
-  login = this.login.bind(this);
-  login(event) {
+  login = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
   }
 
-  checkdata = this.checkdata.bind(this);
-  checkdata(event) {
+  checkdata = (event) => {
     event.preventDefault();
     let login = this.state.login;
     let password = this.state.password;
@@ -49,7 +47,7 @@ class Login extends React.Component {
           if (data.length > 0) {
 
             $('.errorLogin').css('display','none');
-            window.location.href=`${process.env.PUBLIC_URL}/employee`;         
+            window.location.href=`/employee`;         
                return ( <Employee loginData={this.state.login} />);
 
 

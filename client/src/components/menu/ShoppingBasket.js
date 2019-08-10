@@ -242,7 +242,7 @@ class ShoppingBasket extends React.Component {
         console.log(err);
       });
   })
-   )   :       window.location.href = `${process.env.PUBLIC_URL}/menu`;
+   )   :       window.location.href = `/menu`;
 
   }
 
@@ -343,6 +343,7 @@ class ShoppingBasket extends React.Component {
                 // POP UP NO-ORDER
                 <div className="popup__basket">
                   <p className="empty__text">Your basket is empty</p>
+                  <p className='empty__text-demo'> You are in demo website. Here should be a basket list generate from DB</p>
                   <i className="fas fa-exclamation-circle empty__icon" />
                 </div>
               )}

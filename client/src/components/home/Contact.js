@@ -2,40 +2,95 @@ import React from "react";
 import Header from "./Header";
 import Navigation from "./Navigation";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+import $ from 'jquery';
 
 class Contact extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
-  }
-  changeHandler = this.changeHandler.bind(this);
-  changeHandler(event) {
-    let nameState = event.target.name;
-    this.setState({ [nameState]: event.target.value });
+    this.state = {
+      validateMessage: "",
+      validateEmail: false,
+      emptyField: { name: true, message: true, subject: true, email: true }
+    };
   }
 
-  sendMessage = this.sendMessage.bind(this);
-  sendMessage() {
+  changeHandler = event => {
+    let nameState = event.target.name;
+    this.setState({ [nameState]: event.target.value });
+  };
+
+  sendMessage = () => {
     let dataState = this.state;
+
+    if (dataState.email === undefined || dataState.email === "") {
+      $(".validate__email").css({
+        display: "none",
+        visibility: "hidden"
+      });
+
+      this.setState(prevState => ({
+        emptyField: { ...prevState.emptyField, email: true }
+      }));
+    } else {
+      $(".validate__email").css({
+        color: "red",
+        visibility: "visible",
+        display: "inline-block"
+      });
+
+      this.setState(prevState => ({
+        emptyField: { ...prevState.emptyField, email: false }
+      }));
+      function validateEmail(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+      }
+      let validate = () => {
+        var $result = $("#email_label");
+        var email = dataState.email;
+        $result.text("");
+
+        if (validateEmail(email)) {
+          this.setState({ validateEmail: true });
+        } else {
+          this.setState({ validateEmail: false });
+          $result.text("Incorrect email");
+          $result.css("color", "red");
+        }
+        return false;
+      };
+      validate();
+    }
     if (
       dataState.message === undefined ||
       dataState.name === undefined ||
       dataState.subject === undefined ||
-      dataState.email === undefined
+      dataState.email === undefined ||
+      dataState.message === "" ||
+      dataState.name === "" ||
+      dataState.subject === "" ||
+      dataState.email === ""
     ) {
-      alert("Please complete all form before send Your message");
+      $(".validate").css({ color: "red", visibility: "visible" });
+      return this.setState({
+        validateMessage: "Please complete all form before sending Your message"
+      });
     } else {
-      alert("Your message was send");
+      if (this.state.validateEmail === true) {
+        $(".validate").css({ color: "green", visibility: "visible" });
+        // function sending this message {}
+        return this.setState({ validateMessage: "Your message was sent" });
+      } else {
+        $(".validate").css({ color: "red", visibility: "hidden" });
+      }
     }
-  }
+  };
 
   render() {
     const mapStyles = {
       width: "100%",
       height: "100%"
     };
-    console.log(this.state);
-    console.log(this.state.message);
     return (
       <div>
         <Header />
@@ -96,6 +151,7 @@ class Contact extends React.Component {
                   onChange={this.changeHandler}
                 />
                 <input
+                  id='email'
                   type="email"
                   placeholder="Email"
                   name="email"
@@ -103,6 +159,8 @@ class Contact extends React.Component {
                   onChange={this.changeHandler}
                 />
               </span>
+              <div className="validate__email" id="email_label" />
+
 
               <input
                 type="text"
@@ -121,6 +179,7 @@ class Contact extends React.Component {
               <button className="btn message__btn" onClick={this.sendMessage}>
                 Send Message
               </button>
+              <div className="validate"> {this.state.validateMessage} </div>
             </div>
           </div>
           {/* GOOGLE MAPS */}

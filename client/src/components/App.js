@@ -33,10 +33,11 @@ const App = () => {
   return (
     <span>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <span>
-          <Route path="/login" exact component={Login} />
-          <Route path="/Employee" exact component={Employess} />
+      <span>     
+           <Route path="/login" exact component={Login} />
+          <Route path="/employee" exact component={Employess} />
           <Route path='/michaloznerek' exact component={Author} />
+
           <main className="containers">
           <Route path="/" exact component={Home} />
           <Route path="/menu" exact component={Menu} />

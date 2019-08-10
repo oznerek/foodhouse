@@ -19,6 +19,7 @@ const Footer = () => {
           Food2Fork.com
         </a>
       </div>
+      <div className='footer__powered'><a href="/login">Login</a></div>
     </footer>
   );
 };

@@ -175,6 +175,9 @@
         color: $primary-color;
         text-align: center;
         font-size: 200%;
+        &-demo {
+            font-size: 80%;
+        }
     }
 
     &__icon{

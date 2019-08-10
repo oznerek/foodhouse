@@ -47,7 +47,7 @@ body::-webkit-scrollbar-thumb {
   border-radius: 50px; }
 
 .header {
-  background-image: url(../img/header_2.jpg);
+  background-image: url(img/header_2.jpg);
   height: 30rem;
   background-size: cover;
   display: flex; }
@@ -656,18 +656,18 @@ li {
       font-size: 250%; } }
 
 .slideshow li:nth-child(1) span {
-  background-image: url(../img/customers.jpg); }
+  background-image: url(img/customers.jpg); }
 
 .slideshow li:nth-child(2) span {
-  background-image: url(../img/decor1.jpg);
+  background-image: url(img/decor1.jpg);
   animation-delay: 8s; }
 
 .slideshow li:nth-child(3) span {
-  background-image: url(../img/decor2.jpg);
+  background-image: url(img/decor2.jpg);
   animation-delay: 16s; }
 
 .slideshow li:nth-child(4) span {
-  background-image: url(../img/food.jpg);
+  background-image: url(img/food.jpg);
   animation-delay: 24s; }
 
 .slideshow li:nth-child(2) .animation-photo {
@@ -1020,7 +1020,7 @@ li {
 
 .design {
   height: 80vh;
-  background-image: url(../img/decor1.jpg);
+  background-image: url(img/decor1.jpg);
   background-size: cover;
   background-position: center center;
   position: relative;
@@ -1038,7 +1038,7 @@ li {
     bottom: -2rem;
     width: 40%;
     height: 50%;
-    background-image: url(../img/decor2.jpg);
+    background-image: url(img/decor2.jpg);
     background-size: cover;
     background-position: center center;
     z-index: 2; }
@@ -1095,7 +1095,7 @@ li {
 
 .contact {
   height: max-content;
-  background-image: url(../img/contact.jpg);
+  background-image: url(img/contact.jpg);
   background-size: cover;
   background-position: center; }
   .contact__header {
@@ -1224,7 +1224,7 @@ li {
   background-size: cover; }
 
 .login {
-  background-image: url(../img/contact.jpg);
+  background-image: url(img/contact.jpg);
   background-size: cover;
   height: 70rem;
   display: flex;

@@ -96,6 +96,18 @@
         color: $primary-color;
         align-self: center;
     }
+    .validate {
+        width: 100%;
+        font-weight: 100;
+        color: red;
+        visibility: hidden;
+   
+    &__email {
+        font-weight: 100;
+        display: none;
+        text-align: end;
+    }
+}
 }
 
 
