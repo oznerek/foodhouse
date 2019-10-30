@@ -10,7 +10,7 @@
     "create-react-app": "^2.1.5",
     "git": "^0.1.5",
     "google-maps-react": "^2.0.2",
-    "knex": "^0.17.0",
+    "knex": "^0.19.5",
     "mysql": "^2.17.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
