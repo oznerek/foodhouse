@@ -1,0 +1,20 @@
+DB
+host: https://www.freemysqlhosting.ne
+login: ozner91@o2.pl
+pw: YvY35g)3(HLjar4k
+
+DB_host: sql7.freemysqlhosting.net
+DB_name : sql7349408
+User_name: sql7349408
+
+db4free.net a port 3306.
+Baza danych: foodhouse
+Nazwa użytkownika: foodhouse
+Email: ozner91@o2.pl
+
+
+https://app.infinityfree.net/accounts/create/step3
+hostname: sqlXXX.epizy.com
+db_name: epiz_26077926_foodhouse
+username: epiz_26077926
+password: PACCw7HUvMOae

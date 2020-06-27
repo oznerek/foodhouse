@@ -1,20 +1,28 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+// const cros = require("cros");
 const port = process.env.PORT || 5000;
 const mysql = require("mysql");
 const errorHandler = require("./client/src/components/errors");
 const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Artlom91",
-  database: "foodhousedb"
+  host: "db4free.net",
+  user: "foodhouse",
+  password: "YvY35g)3(HLjar4k",
+  database: "foodhouse"
 });
+// const connection = mysql.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   password: "",
+//   database: "foodhouse"
+// });
 
-connection.connect(function(err) {
+connection.connect(function(err) { 
   err ? console.log(err) : console.log("connection");
 });
 
+// app.use(cros());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -26,10 +34,10 @@ app.post("/menu", function(req, res) {
     dish_extras: req.body.dish_extras,
     dish_sauce: req.body.dish_sauce,
     dish_cost: req.body.dish_cost,
-    user_id: req.body.user_id,
+    user_id: 1,
     note: req.body.note
   };
-  connection.query("INSERT INTO basket set ?", sendOrderToBasket, function(
+  connection.query("INSERT INTO orders set ?", sendOrderToBasket, function(
     error,
     data
   ) {
@@ -61,10 +69,12 @@ app.post("/order", function(req, res) {
 
 // -- Import data from: basket, need count for label in nav menu -----
 app.post("/basket", function(req, res, next) {
-  let user_id = req.body.user_id;
+  // let user_id = req.body.user_id;
+  let user_id = 1; 
   connection.query(
     `SELECT * FROM basket WHERE user_id = '${user_id}'`,
     function(error, results) {
+      console.log(results) 
       error ? res.send(error) : res.send(JSON.stringify(results));
     }
   );
@@ -72,7 +82,7 @@ app.post("/basket", function(req, res, next) {
 
 // ------------ Select random comments -----------------------
 app.get("/comments", function(req, res) {
-  let user_id = req.body.user_id;
+  // let user_id = req.body.user_id;
   connection.query(
     `SELECT * FROM customers_comments`,
     function(error, results) {
@@ -80,13 +90,19 @@ app.get("/comments", function(req, res) {
     }
   );
 });
-
+// connection.query(
+//   `SELECT *.'cc' 
+//   'user'.'user_name' 
+//   'user'.'user_surname'
+//   FROM customers_comments as 'cc'
+//   LEFT JOIN 'users' as 'user' on 'user'.'user_id = 'cc'.'user_id'
+//   `,
 
 //------------- Delete orders from basket --------------------
 app.delete("/menu", function(req, res, next) {
   let basket_id = req.body.basket_id;
   connection.query(
-    `DELETE FROM basket WHERE basket_id = ${basket_id} `,
+    `DELETE FROM orders WHERE order_id = 1 `, 
     function(error, results) {
       error ? res.send(error) : res.send(JSON.stringify(results));
     }
@@ -97,9 +113,9 @@ app.delete("/menu", function(req, res, next) {
 app.post("/login", function(req, res, next) {
   let login = req.body.login;
   let password = req.body.password;
-  let database = req.body.database;
   connection.query(
-    `SELECT * FROM ${database}_db WHERE login LIKE BINARY '${login}' and password LIKE BINARY '${password}'`,
+    // `SELECT * FROM ${database}_db WHERE login LIKE BINARY '${login}' and password LIKE BINARY '${password}'`,
+    `SELECT * FROM users WHERE login LIKE BINARY '${login}' and password LIKE BINARY '${password}'`,
     function(err, data, fields) {
       err ? res.send(err) : res.json(data);
       if (data.length > 0) {
@@ -109,6 +125,32 @@ app.post("/login", function(req, res, next) {
       }
     }
   );
+});
+
+app.post("/register", (req, res) => {
+    let { name, surname, email, password, account_type }  = req.body;
+    const registerData ={ name: name,
+                  surname: surname,
+                  email: email,
+                  password: password,
+                  account_type: account_type };
+
+      connection.query("INSERT INTO users set ?", registerData,
+        function(err, data, fields) {
+          err ? res.send(err) : res.json(data);
+        }
+      );
+    
+});
+
+app.post("/checkUserExist", (req, res) => {
+    let {  email }  = req.body;
+    connection.query(`SELECT user_id FROM users where email ="${email}"`,
+      function(err, results) {
+        console.log(results) 
+        err ? res.send(err) : res.json(results); 
+      }
+    );
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
