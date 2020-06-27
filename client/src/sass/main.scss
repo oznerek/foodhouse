@@ -14,9 +14,13 @@
 @import "mainPage/contact";
 @import "mainPage/animation";
 @import "mainPage/author";
+@import "mainPage/notfound";
+@import "mainPage/home-signIn";
 
 
+@import 'login/forms';
 @import "login/login";
+@import "login/register";
 
 @import "employee/order";
 @import "employee/kitchenOrder";

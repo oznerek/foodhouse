@@ -1,0 +1,30 @@
+.notfound{
+    width: 100%;
+    background-color: #fff;
+    margin: auto; 
+    padding-bottom: 5rem;
+
+    img{
+        display: block;
+        width: 100%;
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .btn__back{
+        display: block;
+        width: 200px;
+        padding: 1rem 3.5rem;
+        border-radius: 5px;
+        background-color: $green-dark;
+        margin: 5rem auto;
+        color: #fff;
+        font-weight: 600;
+        text-align: center;
+        &:hover{
+            text-decoration: none;
+            background-color: rgba($green-dark, .8);
+        }
+
+    }
+}

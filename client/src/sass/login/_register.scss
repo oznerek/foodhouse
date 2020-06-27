@@ -1,0 +1,15 @@
+.register {
+    background-color: $light-color-1; 
+    padding: 5rem 0;
+
+    .form{
+        max-width: 450px;
+        margin: auto;
+    }
+    .sign-in-link{
+        display: block;
+        padding-top: 2rem;
+        color: $primary-color;
+        text-align: center;
+    }
+} 

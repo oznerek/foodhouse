@@ -1,47 +1,42 @@
-import React from 'react';
+import React from "react";
 
-class CommentCard extends React.Component {
-
-    render() {
-      let comment = this.props.commentsid;
-        return (
-          comment !== undefined? (
-          <div className="customers-card">
-            <div className="customers-card-header">
-              <div className="customers-card-header2">
-                <div className="customers-card__user">
-                  <img
-                    src="img/user.png"
-                    alt="User"
-                    className="customers-card__user-photo"
-                  />
-                </div>
-                <div className="customers-card__user-data">
-                  <h2 className="customers-card__user-name">{comment.user_name} {comment.user_lastname}</h2>
-                  <p className="customers-card__user-date">
-                    {comment.data.slice(0,10)}
-                  </p>
-                </div>
-              </div>
-              <div>
-                <span className="customers-card__user-stars">
-                  <i className="fas fa-star" />
-                  <i className="fas fa-star" />
-                  <i className="fas fa-star" />
-                  <i className="fas fa-star" />
-                  <i className="fas fa-star" />
-                </span>
-              </div>
-            </div>
-            <p className="customers-card__comments">
-              "{comment.comments} "
+const CommentCard = ({comment}) => {
+  console.log(comment)
+  return (
+    comment !== undefined? (
+    <div className="comment-card">
+        <div className="comment-card__user">
+          <img
+            src="img/user.png"
+            alt="User"
+            className="comment-card__user-photo"
+          />
+        </div>
+        <div className="comment-card-content">
+          <div className="comment-card__user-data">
+            <div className="comment-card__user-name">Tom Bark</div>
+            {/* <h2 className="comment-card__user-name">{comment.user_name} {comment.user_lastname}</h2> */}
+            <p className="comment-card__user-date">
+              {comment.data}  
+              <span className="comment-card__user-stars">
+                <i className="fas fa-star" />
+                <i className="fas fa-star" />
+                <i className="fas fa-star" />
+                <i className="fas fa-star" />
+                <i className="fas fa-star "/>
+              </span>
             </p>
           </div>
-        )
-        : (<div>brak danych</div>)
-        )
-        }
+          <p className="comment-card__comments">
+            "{comment.comment} "
+            {/* "he best Reastaurant in the town" */}
+          </p>
+        </div>
 
-}
+      </div>
+    )
+    : (<div className="comment-card">Connection error</div>)
+  );
+};
 
 export default CommentCard;

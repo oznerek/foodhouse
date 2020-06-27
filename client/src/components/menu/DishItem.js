@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchDishDetails } from "../../actions";
+import { fetchDishDetails } from "../../store/actions";
 
 class DishItem extends React.Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class DishItem extends React.Component {
       isChecked: false,
       extras: [],
       sauce: "Garlic",
-      extrasCost: 0
+      extrasCost: 0,
     };
   }
 
@@ -30,33 +30,38 @@ class DishItem extends React.Component {
 
   addExtras = (event) => {
     let { name } = event.target;
-    let priceForSelectedExtras  = parseFloat(event.target.value); //price of the selected extras
+    let priceForSelectedExtras = parseFloat(event.target.value); //price of the selected extras
 
-    this.setState(prevState => {
+    this.setState((prevState) => {
       const { extras } = prevState;
       if (extras.includes(name)) {
-        this.setState({extrasCost: this.state.extrasCost - priceForSelectedExtras});
-        return { extras: extras.filter(value => value !== name)}
-
+        this.setState({
+          extrasCost: this.state.extrasCost - priceForSelectedExtras,
+        });
+        return { extras: extras.filter((value) => value !== name) };
       } else {
-        this.setState({extrasCost: this.state.extrasCost + priceForSelectedExtras});
-        return { extras: [...extras, name] }
+        this.setState({
+          extrasCost: this.state.extrasCost + priceForSelectedExtras,
+        });
+        return { extras: [...extras, name] };
       }
     });
-  }
+  };
 
   handleChange = (event) => {
     this.setState({ sauce: event.target.value });
-  }
+  };
 
   sendOrder = (event) => {
     event.preventDefault();
     let orderName = this.props.onItem.title;
-    let orderCost = (parseFloat(this.props.price) + this.state.extrasCost).toFixed(2);
+    let orderCost = (
+      parseFloat(this.props.price) + this.state.extrasCost
+    ).toFixed(2);
     let orderExtras = this.state.extras;
     let orderSauce = this.state.sauce;
     let orderCount = this.state.numberOfDishes;
-    let user_id = localStorage.getItem('user_id');
+    let user_id = localStorage.getItem("user_id");
 
     let sendOrderToBasket = {
       dish_name: orderName,
@@ -64,31 +69,16 @@ class DishItem extends React.Component {
       dish_extras: orderExtras.toString(),
       dish_sauce: orderSauce,
       dish_cost: orderCost,
-      user_id:  user_id,
-      note: ""
+      user_id: user_id,
+      note: "",
     };
-
-    // ---------------- SAVE DISH IN DATABASE : basket --------------- //
-    fetch("/menu", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(sendOrderToBasket)
-    })
-      .then(function(response) {
-        if (response.status >= 400) {
-          throw new Error("Bad response from server");
-        }
-        return response.json();
-      })
-      .then(function(data) {
-        console.log("Order has added to database: basket");
-      })
-      .catch(function(err) {
-        console.log(err);
-      }); 
-  }
+    
+    let basket = JSON.parse(localStorage.getItem("basket"));
+    let newBasket = [];
+    (basket === null ) ? newBasket = [sendOrderToBasket] : newBasket = [...basket, sendOrderToBasket];
+    
+    localStorage.setItem('basket', JSON.stringify(newBasket));
+  };
 
   renderExtrasList() {
     let extrasName = [
@@ -99,9 +89,9 @@ class DishItem extends React.Component {
       { name: "Chedar", price: 2.0 },
       { name: "Dried tomatoes", price: 1.5 },
       { name: "Goat Cheese", price: 2.0 },
-      { name: "Gouda", price: 1.5 }
+      { name: "Gouda", price: 1.5 },
     ];
-    return extrasName.map(item => (
+    return extrasName.map((item) => (
       <div className="extras__item" key={item.name}>
         <span className="extras__name">
           <input
@@ -111,12 +101,31 @@ class DishItem extends React.Component {
             name={item.name}
             value={item.price}
           />
-          {item.name}
+         <label>
+          {item.name} 
+          </label> 
         </span>
         <span className="extras__price">{item.price} PLN</span>
       </div>
     ));
   }
+
+  renderSauceList() {
+    let sauceList = [
+      "None",
+      "Garlic",
+      "Thousand Island",
+      "Spice",
+      "BBQ",
+      "American",
+    ];
+    return sauceList.map((item) => (
+      <option key={item} value={item} className="sauce__item">
+        {item}
+      </option>
+    ));
+  }
+
   render() {
     const { onItem, price } = this.props;
     let collapseIdName = onItem.title.replace(/ /g, "").slice(0, 10);
@@ -125,11 +134,11 @@ class DishItem extends React.Component {
       (parseFloat(this.props.price) + this.state.extrasCost) *
       this.state.numberOfDishes
     ).toFixed(2);
-   
+
     return (
       <div className="cards">
         <div className="row">
-          <div className="col-3 cards__left">
+          <div className="col-sm-3 col-5 cards__left">
             <img
               className="cards__img"
               src={onItem.image_url}
@@ -137,7 +146,7 @@ class DishItem extends React.Component {
             />
           </div>
           <div
-            className="col-9 cards__right"
+            className="col-sm-9 col-7 cards__right"
             data-toggle="collapse"
             href={collapseName}
           >
@@ -172,22 +181,7 @@ class DishItem extends React.Component {
                 value={this.state.sauce}
                 onChange={this.handleChange}
               >
-                 <option value="" className="sauce__item">
-                  None
-                </option>
-                <option value="Garlic" className="sauce__item">
-                  Garlic
-                </option>
-                <option value="1000 Island" className="sauce__item">
-                  Thousand Island dressing
-                </option>
-                <option value="Spice" className="sauce__item">
-                  Spice{" "}
-                </option>
-
-                <option value="Mordor" className="sauce__item">
-                  Mordor
-                </option>
+                {this.renderSauceList()}
               </select>
             </div>
           </form>
@@ -206,9 +200,8 @@ class DishItem extends React.Component {
             </div>
             <div className="pay__price">
               <button className="btn btn__pay" onClick={this.sendOrder}>
-                {finalPrice}
+                <span>{finalPrice}</span>
                 PLN
-                <span className="btn__span">+</span>
               </button>
             </div>
           </div>
@@ -218,7 +211,7 @@ class DishItem extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return { menuList: state.menuList, detail: state.dishDetails };
 };
 

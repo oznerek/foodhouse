@@ -1,0 +1,122 @@
+.form {
+  width: calc(50% - 15px);
+  height: auto;
+  @media only screen and (max-width: $tablet) {
+    padding: 60px 30px;
+    width: 100%;
+  }
+  @media only screen and (max-width: $phone) {
+    padding: 30px 15px;
+  }
+  &__header {
+    color: $primary-color;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+
+  .input__label {
+    position: absolute;
+    background-color: $light-color-1;
+    color: $primary-color;
+    padding: 0px 10px;
+    top: 10px;
+    left: 5px;
+    line-height: 1;
+    font-size: 18px;
+  }
+  .input {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 18px;
+    width: 100%;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+
+    &:focus,
+    &:active,
+    &:visited {
+      background-color: transparent;
+      color: $primary-color;
+      outline: none;
+      &::placeholder {
+        color: $primary-color;
+      }
+    }
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px $light-color-1 inset !important;
+    }
+
+    &::placeholder {
+      color: $secondary-color;
+      font-weight: 200;
+    }
+
+    &-textarea {
+      background-attachment: s;
+      min-height: 120px;
+    }
+  }
+  .input__field {
+    width: 100%;
+    display: block;
+    position: relative;
+    margin-bottom: 20px;
+    transition: 0.2s;
+    &.active {
+      border: none;
+      .input__label {
+        top: -10px;
+        font-size: 14px;
+      }
+    }
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .input__field {
+      width: calc(50% - 10px);
+    }
+    @media only screen and (max-width: 500px) {
+      flex-direction: column;
+      .input__field {
+        width: 100%;
+      }
+    }
+  }
+
+  &__btn {
+    display: block;
+    width: 230px;
+    color: $light-color-1;
+    background-color: $primary-color;
+    padding: 1rem;
+    margin: auto;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba($primary-color, 0.9);
+    }
+  }
+  .validate {
+    width: 100%;
+    font-weight: 100;
+    font-size: 14px;
+    color: $secondary-light;
+
+    &__success {
+      color: $green-dark;
+      margin: 10px 0px;
+      text-align: center;
+      font-size: 18px;
+    }
+  }
+}

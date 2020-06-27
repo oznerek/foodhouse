@@ -1,11 +1,8 @@
 import React from "react";
 import MenuList from "./MenuList";
 import MenuListPhone from "./MenuListPhone";
-import Header from "../home/Header";
-import Navigation from "../home/Navigation";
-
 import DishList from "./DishList";
-import { fetchMenu } from "../../actions";
+import { fetchMenu } from "../../store/actions";
 import { connect } from "react-redux";
 
 class Customers extends React.Component {
@@ -25,15 +22,11 @@ class Customers extends React.Component {
 
   render() {
     return (
-      <div>
-        <Header />
-        <Navigation />
         <div className="menu">
           <MenuList data-trigger="focus" />
           <MenuListPhone />
           <DishList recipes={this.props.menuList} />
         </div>
-      </div>
     );
   }
 }

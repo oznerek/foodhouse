@@ -1,119 +1,19 @@
 .login {
-  background-image: url(img/contact.jpg);
-  background-size: cover;
-  height: 70rem;
+  background-color: $light-color-1;
+  padding: 5rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; 
-
-  &__form {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    @media only screen and (max-width: $tablet) {
-      width: 60%;
-    }
-    @media only screen and (max-width: $phone) {
-      width: 80%;
-    }
-
-    label {
-      padding-left: 3rem;
-      @media only screen and (max-width: $tablet) {
-        padding-left: 1.5rem;
-      }
-    }
-    input {
-      background-color: transparent;
-      border: 1.5px solid $light-color-2;
-      border-radius: 50px;
-      height: 5rem;
-      color: $light-color-1;
-      padding-left: 2rem;
-      @media only screen and (max-width: $tablet) {
-        height: 4rem;
-      }
-      &:hover,
-      &:visited {
-        background-color: rgba($light-color-1, 0.3);
-      }
-    }
-    select {
-      width: 50%;
-      height: 4rem;
-      background-color: transparent;
-      // background-color: rgba($light-color-1, .5);
-      border: 1.5px solid $light-color-2;
-      border-radius: 50px;
-      color: white;
-      padding-left: 2rem;
-      option {
-        background-color: $primary-color;
-        border-radius: 50px;
-        &:hover {
-          background-color: purple;
-        }
-      }
-    }
-    input:focus,
-    select:focus {
-      color: white;
-      outline: none;
-    }
-  }
-
-  &__btn {
-    background-color: $secondary-light;
-    color: $light-color-2;
-    border: none;
-    border-radius: 50px;
-    height: 5rem;
-    margin-top: 5rem;
-    &:hover {
-      filter: contrast(1.2);
-      color: $light-color-2;
-      transform: scale(1.05);
-      border: 1px solid $light-color-2;
-    }
-    &:focus {
-      outline: none;
-    }
-  }
-}
-.info {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-}
 
-.tooltips {
-  position: relative;
-  &:hover > &__text {
-    width: 200px;
+  .form {
+    max-width: 450px;
+    margin: auto;
+  }
+  .sign-in-link {
     display: block;
-    position: absolute;
-    left: 2rem;
-    top: 2rem;
-    background-color: $primary-color;
-    padding: 2rem;
-    border-radius: 10px;
-    border: 1px solid $light-color-2;
-    @media only screen and (max-width: $tablet) {
-      left: -20rem;
-    }
+    padding-top: 2rem;
+    color: $primary-color;
+    text-align: center;
   }
-  &__text {
-    display: none;
-  }
-}
-
-.errorLogin {
-  background-color: $light-color-2;
-  color: $secondary-light;
-  border-radius: 10px;
-  padding: 1rem;
-  border: 2px solid $secondary-light;
-  display: none;
 }

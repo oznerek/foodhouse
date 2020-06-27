@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { selectMenu } from "../../actions";
+import { selectMenu } from "../../store/actions";
 import $ from 'jquery'
 
 class MenuListPhone extends React.Component {

@@ -53,6 +53,7 @@
     align-items: center;
     margin: 0.5rem;
     animation: moveInLeft 1s;
+    color: $primary-color;
 
     @media only screen and (max-width: $tablet_land) {
         transform: scale(.8);

@@ -1,0 +1,46 @@
+.signIn {
+    background-color: $light-color-1 ;
+    color: $primary-color;
+    
+    .frame{
+        max-width: 500px;
+        margin: auto;
+        border-top: 1px solid $primary-color;
+        border-bottom: 1px solid $primary-color;
+        @media only screen and (max-width: $phone) {
+            margin: 15px;
+          } 
+    } 
+
+    .discount {
+        font-size: 40px;
+        font-weight: bold;
+        margin: 2rem auto 0rem auto;
+        text-align: center;
+        &__description{
+            font-size: 24px;
+            text-align: center;
+            margin: 2rem auto;
+        }
+    }
+    .create-acount{
+        margin-top: 1rem;
+        font-size: 20px;
+        text-align: center;
+    }
+    &__btn {
+        display: block;
+        width: 20rem;
+        padding: 1rem 3rem;
+        background-color: $green-dark;
+        margin: 2rem auto 4rem auto;
+        border-radius: 5px;
+        color: #fff;
+        text-align: center;
+        &:hover {
+            color: currentColor;
+            text-decoration: none;
+            background-color: rgba($green-dark, .8);
+        }
+    }
+}
