@@ -23,3 +23,25 @@ export const animatePhoto = [
   {name: 'Image 03', description: '· · 3 Special Rooms · ·' },
   {name: 'Image 04', description: '· · The Best Food · ·' },
  ];
+
+export const extrasName = [
+  { name: "Salami", price: 1.5 },
+  { name: "Chicken", price: 2.0 },
+  { name: "Tomato", price: 1.5 },
+  { name: "Olives", price: 1.5 },
+  { name: "Chedar", price: 2.0 },
+  { name: "Dried tomatoes", price: 1.5 },
+  { name: "Goat Cheese", price: 2.0 },
+  { name: "Gouda", price: 1.5 },
+];
+
+export const sauceList = [
+  "None",
+  "Garlic",
+  "Thousand Island",
+  "Spice",
+  "BBQ",
+  "American",
+];
+
+export const menuList = ["Pizza", "Hamburger", "Pasta", "Sushi", "Kebab", "Salad", "Seafood"]

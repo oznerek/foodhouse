@@ -1,41 +1,41 @@
 import React from "react";
-import MenuList from "./MenuList";
-import MenuListPhone from "./MenuListPhone";
-import DishList from "./DishList";
-import { fetchMenu } from "../../store/actions";
+import MenuList from "./menuList";
+import MenuListPhone from "./menuListPhone";
+import DishList from "./dishList";
+import { fetchMenu, selectMenu } from "../../store/actions/dish.actions";
 import { connect } from "react-redux";
 
 class Customers extends React.Component {
   componentDidMount() {
-    this.props.fetchMenu(this.props.menu);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.menu !== prevProps.menu) {
-      this.props.fetchMenu(this.props.menu);
+    if (this.props.dishList.length === 0 ) {
+      this.props.fetchMenu(this.props.selectedDishType);
     }
   }
 
-  toogleList() {
-    document.getElementById("toogleList").style.display = "block";
+  componentDidUpdate(prevProps) {
+    if (this.props.selectedDishType !== prevProps.selectedDishType) {
+      this.props.fetchMenu(this.props.selectedDishType);
+    }
   }
 
   render() {
+    const { selectMenu , dishList, selectedDishType } = this.props;
     return (
         <div className="menu">
-          <MenuList data-trigger="focus" />
-          <MenuListPhone />
-          <DishList recipes={this.props.menuList} />
+          <MenuList selectedDish={selectedDishType} onChange={selectMenu} />
+          <MenuListPhone onChange={selectMenu} />
+          <DishList dishList={dishList} />
         </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return { menu: state.menuSelected, menuList: state.menuList };
+  const {selectedDishType , dishList } = state.dishes;
+  return { selectedDishType, dishList };
 };
 
 export default connect(
   mapStateToProps,
-  { fetchMenu }
+  { fetchMenu, selectMenu }
 )(Customers);

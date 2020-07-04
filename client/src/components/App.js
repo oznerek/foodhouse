@@ -1,54 +1,44 @@
-import React from "react";
+import React, { Component } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Menu from "./menu/index";
-import Footer from "./home/Footer";
-import Home from "./home/Home";
+import Footer from "./home/footer";
+import Home from "./home/home";
 import Contact from "./home/contact";
-import Login from "./employees/login";
-import Employess from "./employees/EmployeeMenuList";
+import Login from "./usersPage/login";
+import Employess from "./usersPage/EmployeeMenuList";
 import NotFound from "./home/notFound";
 import Navigation from "./home/navigation";
-import Author from "./author";
-import Header from "./home/Header";
-import { uniqueKey } from './func';
-import Register from './employees/register';
+import Header from "./home/header";
+import Register from './usersPage/register';
+import { PrivateRoute } from './common/PrivateRoute';
 
-const App = () => {
-  function checkUserId() {
-    let user_id = localStorage.getItem("user_id");
+class App extends Component {
+  state ={};
 
-    if (user_id === null) {
-      localStorage.setItem("user_id", uniqueKey());
-    }
-  }
-  checkUserId();
-
+  render(){
+    return (
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <React.Fragment>
+          <Header />
+          <Navigation />
+          <main className="containers">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
+              <PrivateRoute path="/user" component={Employess} />
   
-
-  return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <React.Fragment>
-        <Header />
-        <Navigation />
-        <main className="containers">
-          <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="/employee" component={Employess} />
-            <Route path="/michaloznerek" component={Author} />
-
-            <Route path="/home" component={Home} />
-            <Route path="/menu" component={Menu} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/not-found" component={NotFound} />
-            <Redirect from="/" exact to="/home" />
-            <Redirect to="/not-found" />
-          </Switch>
-        </main>
-        <Footer />
-      </React.Fragment>
-    </BrowserRouter>
-  );
+              <Route path="/menu" component={Menu} />
+              <Route path="/contact" component={Contact} />
+              <Route path="/not-found" component={NotFound} />
+              <Redirect to="/not-found" />
+            </Switch>
+          </main>
+          <Footer />
+        </React.Fragment>
+      </BrowserRouter>
+    );
+  }
 };
 
 export default App;

@@ -5,8 +5,9 @@
     "scripts": {
         "sass": "cd client && npm run compile:sass",
         "client": "cd client && npm start",
+        "webpack-tree": "cd client && npm run webpack",
         "server": "nodemon server.js",
-        "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\" \"npm run sass\"",
+        "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\" \"npm run sass\" ",
         "predeploy": "cd client && npm run build",
         "deploy": "cd client && gh-pages -d build"
     },
@@ -14,6 +15,7 @@
         "body-parser": "^1.18.3",
         "express": "^4.16.4",
         "gh-pages": "^2.0.1",
+        "jade": "^1.11.0",
         "jquery": "^3.4.1",
         "mysql": "^2.17.1",
         "nodemon": "^1.19.1"

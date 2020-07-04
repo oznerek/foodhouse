@@ -1,6 +1,7 @@
 .popup {
     height: 100vh;
     width: 100%;
+    min-width: 320px;
     position: fixed;
     top: 0;
     left: 0;
@@ -37,11 +38,14 @@
     &__basket {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         background-color: $light-color-2;
         border-radius: 5px;
-        min-height: 70rem;
+        height: 70vh;
+        width: 70rem;
         @media only screen and (max-width: $tablet) {
-            min-height: 100vh;
+            width: 80%;
+            height: 80vh;
         } 
     }
     
@@ -74,7 +78,13 @@
             font-size: 130%; 
         }
         &-extras,
-        &-sauce{font-size: 90%}
+        &-sauce{ 
+            font-size: 16px;
+            span{
+               font-size: 14px;
+               text-transform: initial;
+            }
+        }
     }
     &__change{
         display: flex;
@@ -91,7 +101,7 @@
 
             width: 2rem;
             height: 2rem;
-            background-color: $light-color-1;
+            background-color: $primary-color;
             color: $light-color-2;
             font-size: 70%;
             border: none;
@@ -128,19 +138,22 @@
         }
     }
     &__btn{
+        display: block;
         margin-bottom: 2rem;
         border: none;
-        background-color: $green-dark;
+        background-color: $primary-color;
         color: $light-color-2;
         width: 80%;
         margin-left: 10%;
         border-radius: 5px;
         font-size: 130%;
         transition: all .4s;
+        text-align: center;
+        cursor: pointer;
         &:hover,
         &:active{
-            background-color: $green-light;
-            transform: scale(1.1);
+            background-color: $green-dark;
+            transform: scale(1.05);
         }
     }
     &__count {
@@ -192,6 +205,7 @@
         color: $secondary-light;
         font-size: 300%;
         text-align: center;
+        width: 100%;
     }
     &__btn{ 
         margin: 5rem;
@@ -206,7 +220,10 @@
 
 .overflow {
     overflow: auto;
-    max-height: calc(100vh - 200px);
+    max-height: calc(70vh - 200px);
+    @media only screen and (max-width: $tablet) {
+        max-height: calc(80vh - 200px);
+    }
     &::-webkit-scrollbar { width: .5em;  }    
     &::-webkit-scrollbar-thumb {
         background-color: $secondary-light;

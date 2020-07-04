@@ -22,6 +22,7 @@ connection.connect(function(err) {
   err ? console.log(err) : console.log("connection");
 });
 
+
 // app.use(cros());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -69,12 +70,10 @@ app.post("/order", function(req, res) {
 
 // -- Import data from: basket, need count for label in nav menu -----
 app.post("/basket", function(req, res, next) {
-  // let user_id = req.body.user_id;
   let user_id = 1; 
   connection.query(
     `SELECT * FROM basket WHERE user_id = '${user_id}'`,
     function(error, results) {
-      console.log(results) 
       error ? res.send(error) : res.send(JSON.stringify(results));
     }
   );
@@ -114,40 +113,40 @@ app.post("/login", function(req, res, next) {
   let login = req.body.login;
   let password = req.body.password;
   connection.query(
-    // `SELECT * FROM ${database}_db WHERE login LIKE BINARY '${login}' and password LIKE BINARY '${password}'`,
-    `SELECT * FROM users WHERE login LIKE BINARY '${login}' and password LIKE BINARY '${password}'`,
+    `SELECT user_id, email, account_type FROM users WHERE email = '${login}' and password = '${password}'`,
     function(err, data, fields) {
       err ? res.send(err) : res.json(data);
-      if (data.length > 0) {
-        console.log("uzytkownik istnieje");
-      } else {
-        console.log("zle dane");
-      }
     }
   );
 });
 
 app.post("/register", (req, res) => {
-    let { name, surname, email, password, account_type }  = req.body;
-    const registerData ={ name: name,
-                  surname: surname,
-                  email: email,
-                  password: password,
-                  account_type: account_type };
+  let { name, surname, email, password, account_type }  = req.body;
+  const registerData ={ name: name,
+                surname: surname,
+                email: email,
+                password: password,
+                account_type: account_type }; 
 
-      connection.query("INSERT INTO users set ?", registerData,
-        function(err, data, fields) {
-          err ? res.send(err) : res.json(data);
-        }
-      );
-    
+    connection.query("INSERT INTO users set ?", registerData,
+      function(err, data, fields) {
+        err ? res.send(err) : res.json(data);
+      }
+    )
 });
+
+app.post("/delete", (req, res) =>{
+  let { user_id } = req.body;
+  connection.query(`DELETE FROM users where user_id = ${user_id}`,
+  function(err, data){
+    err ? res.send(err) : res.json(data);
+  })
+})
 
 app.post("/checkUserExist", (req, res) => {
     let {  email }  = req.body;
     connection.query(`SELECT user_id FROM users where email ="${email}"`,
       function(err, results) {
-        console.log(results) 
         err ? res.send(err) : res.json(results); 
       }
     );

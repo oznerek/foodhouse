@@ -9,7 +9,7 @@
 @import "mainPage/startpage";
 @import "mainPage/visit";
 @import "mainPage/socialmedia";
-@import "mainPage/food";
+@import "mainPage/dish-menu-mobile";
 @import "mainPage/design";
 @import "mainPage/contact";
 @import "mainPage/animation";
@@ -22,8 +22,8 @@
 @import "login/login";
 @import "login/register";
 
-@import "employee/order";
-@import "employee/kitchenOrder";
-@import "employee/employeeHome";
-@import "employee/editEmployeeData";
-@import "employee/employeeAddOrder";
+@import "user/order";
+@import "user/kitchenOrder";
+@import "user/user-home";
+@import "user/edit-user";
+@import "user/userAddOrder";

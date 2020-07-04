@@ -4,6 +4,7 @@ import { googleMapApiKey } from '../utils/config';
 import Joi from 'joi-browser';
 import Form from '../common/form';
 import { socialMedia, contact } from '../utils/data';
+import { Link } from 'react-router-dom';
 
 class Contact extends Form {
   state = {
@@ -45,9 +46,9 @@ class Contact extends Form {
                   <p className="address__title">{item.title}</p>
                   <p className="address__code">
                     {(item.link) 
-                    ? <a href={item.link} className="address__link"> {item.fill}  
+                    ? <Link to={item.link} className="address__link"> {item.fill}  
                         {(item.iconClass) ? <i className={item.iconClass} /> : ''} 
-                      </a> 
+                      </Link> 
                     : <span>{item.fill}</span> } 
                   </p>
                 </span>
@@ -56,9 +57,9 @@ class Contact extends Form {
               <h2 className="address__title">Follow Us</h2>
               <div className="socialmedia__links contact__links">
                 {socialMedia.map(item => (
-                  <a key={item.linkClass} href={item.link} target="_blank" className={item.linkClass} >
+                  <Link key={item.linkClass} to={item.link} target="_blank" className={item.linkClass} >
                     <i className={item.iconClass} />
-                  </a>
+                  </Link>
 
                 ))}
               </div>
@@ -88,9 +89,9 @@ class Contact extends Form {
                 <Marker position={{ lat: 40.6606, lng: -73.8811 }} />
               </Map>
             </div>
-            <a href="#contact" className="popup__close maps__close">
+            <Link to="#contact" className="popup__close maps__close">
               <i className="far fa-times-circle toogle__btn" />
-            </a>
+            </Link>
           </div>
         </section>
       </div>
@@ -100,4 +101,4 @@ class Contact extends Form {
 
 export default GoogleApiWrapper({
   apiKey: googleMapApiKey
-})(Contact);
+})(Contact); 

@@ -1,0 +1,116 @@
+.food{
+    height: 80vh;
+    background-color: purple;
+    position: relative;
+}
+
+.open{
+    display: none;
+    z-index: 1002;
+    background-color: $primary-color;
+    border-radius: 50%;
+	position: fixed;
+	bottom: 2rem;
+	right: 2rem;
+	width: 50px;
+	height: 50px;
+	transition: opacity 0.1s linear;
+	cursor: pointer;
+    @media only screen and (max-width: $tablet) {
+        display: block;      }
+	span{
+		display: block;
+		float: left;
+		clear: both;
+		height: 3px;
+		width: 30px;
+		border-radius: 40px;
+		background-color: $light-color-2;;
+		position: absolute;
+		right:10px;
+		overflow: hidden;
+		transition: all 0.4s ease;
+		&:nth-child(1){
+			margin-top: 13px;
+			z-index: 9;
+		}
+		&:nth-child(2){
+			margin-top: 23px;
+		}
+		&:nth-child(3){
+			margin-top: 33px;
+		}
+	}
+}
+
+
+// MENU FOR MOBILE PHONE
+.sub-menu{
+	transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+		height: 0;
+		width: 0;
+		right: 0;
+		top: 0;
+		position: absolute;
+		background-color: rgba($primary-color, .7);
+		border-radius: 50%;
+		z-index: 18;
+		overflow: hidden;
+		cursor: auto;
+		li{
+			color: $light-color-1;
+			display: block;
+			float: right;
+			clear: both;
+			height: auto;
+			padding: .5rem 0;
+			margin-right: -150px;
+			cursor: pointer;
+			transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+			-webkit-transition-delay: 0.3s;
+
+			&:hover{ color: white}
+		}
+	}
+
+	.oppenned{
+        background-color: white;
+        color: $primary-color;
+        z-index: 1004;
+		.sub-menu{
+            z-index: 1001;
+            padding-top: 4rem;
+			opacity: 1;
+			height: 100%;
+            width: 100%;
+            top: -4rem;
+        }
+        span {
+            background-color: white;
+        }
+		span:nth-child(2){
+			overflow: visible;
+		}
+		span:nth-child(1), span:nth-child(3){
+			z-index: 1003;
+			transform: rotate(45deg);
+		}
+		span:nth-child(1){
+			transform: rotate(45deg) translateY(6px) translateX(7px);
+		}
+		span:nth-child(2){
+            z-index: 1000;
+			height: 46rem;
+			width: 46rem;
+			right: -16rem;
+			top: -26rem;
+			border-radius: 50%;
+			background-color: rgba($primary-color, .7);
+		}
+		span:nth-child(3){			
+			transform: rotate(-45deg) translateY(-8px) translateX(8px);
+		}
+		li{
+			margin-right: 17rem;
+		}
+	}

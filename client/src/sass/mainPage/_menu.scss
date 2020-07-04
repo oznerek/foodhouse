@@ -1,9 +1,12 @@
 .menu {
+  padding: 0 10%;
   display: flex;
   background-color: $light-color-2;
+  @media only screen and (max-width: $tablet) {
+    padding: 0 1.5rem;
+  }
 
   &__nav {
-    margin-left: 2rem;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -87,11 +90,15 @@
     overflow: hidden;
     position: relative;
     padding-top: 3rem;
+    margin-left: 5rem;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    @media only screen and (max-width: $tablet) {
+      margin: 0;
+    }
   }
 
   &__name {
@@ -107,12 +114,25 @@
   border-radius: 5px;
   border: 1px solid #81808c;
   background-color: transparent;
-  width: 90%;
+  width: 100%;
   color: $primary-color;
   transition: all 0.3s;
   overflow: hidden;
-
+  
+  &__left {
+    width: 350px;
+    @media only screen and (max-width: $desktop) {
+      width: 30rem;
+    }
+    @media only screen and (max-width: $tablet-land) {
+      width: 25rem;
+    }
+    @media only screen and (max-width: $tablet) {
+      width: 35rem;
+    }
+  }
   &__right {
+    width: 100%;
     position: relative;
 
     &[aria-expanded="true"]{
@@ -186,7 +206,7 @@
     transform: rotate(45deg);
   }
   &__btn {
-    color: $light-color-1;
+    color: $primary-color;
   }
 }
 

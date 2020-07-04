@@ -1,0 +1,103 @@
+.edit {
+    width: 100%;
+    border-top: 1px solid $primary-color;
+
+    &__navigation {
+        &-item{
+            text-align: center;
+            display: inline-block;
+            width: 33.3%;
+            background-color: $light-color-2;
+            border: 1px solid #262626;
+            border-top: none;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            color: $primary-color;
+            cursor: pointer;
+
+            &.editActive{
+                background-color: $light-color-1;
+            }
+        }
+    }
+
+    .login {
+        background-color: transparent;
+        color: $light-color-1;
+
+        .form__header{ color: $light-color-1; }
+        .input__label {
+            background-color: $primary-color;
+            color: $light-color-1;
+        }    
+        .input {
+            color: $light-color-1;
+            border-color: $light-color-1;;
+        }
+        .form__btn{
+            color: $primary-color;
+            background-color: $light-color-1;;
+        }
+    }
+
+
+}
+
+.profile {
+    &__form {
+        padding: 3rem;
+    }
+
+    &__input {
+        background-color: $light-color-2;
+        border: none;
+        border-radius: 5px;
+        width: 35%;
+        margin: 1rem;
+        padding-left: 1.5rem;
+        @media only screen and (max-width: $tablet) {
+            margin: 0;
+            margin-bottom: 1rem; 
+            width: 90%;
+            height: 2rem;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+    &__label {
+        width:25%;
+        @media only screen and (max-width: $tablet) {
+            width: 40%
+        }
+    }
+
+    &__validation {
+        background-color: $light-color-2;
+        border-radius: 5px;
+        color: $secondary-light;
+        width: 60%;
+        text-align: center;
+        visibility: hidden;
+        @media only screen and (max-width: $tablet) {
+            width: 90%;
+            height: 3rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__btn {
+        width: 35%;
+        margin: 1rem;
+        @media only screen and (max-width: $tablet) {
+            width: 90%;
+            margin: 0;
+            margin-top: 1rem;
+        }
+        &:hover {
+            background-color: $secondary-light;
+        }
+    }
+}
+ 
