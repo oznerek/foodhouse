@@ -13,7 +13,7 @@
     },
     "dependencies": {
         "body-parser": "^1.18.3",
-        "express": "^4.16.4",
+        "express": "^4.17.3",
         "gh-pages": "^2.0.1",
         "jade": "^1.11.0",
         "jquery": "^3.4.1",
